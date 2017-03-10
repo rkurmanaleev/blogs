@@ -60,7 +60,6 @@ group :test do
   gem "guard-rspec"
   gem "launchy"
   gem "poltergeist"
-  gem "rails-controller-testing"
   gem "rspec-its"
   gem "shoulda-matchers"
   gem "terminal-notifier-guard"
