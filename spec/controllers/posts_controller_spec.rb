@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe PostsController, type: :controller do
-
   describe "#index" do
     let(:user) { create(:user) }
     let(:posts) { create_list(:post, 14, user: user) }

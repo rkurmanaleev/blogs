@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "List recent posts" do
-
   context "Authorised User" do
     include_context "current user signed in"
     let!(:posts) { create_list(:post, 15, user: current_user) }
