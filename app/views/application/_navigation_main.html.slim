@@ -3,3 +3,4 @@
     li = link_to "Rails Base example site", root_path
     - if user_signed_in?
       = active_link_to "Home", root_path, active: :exclusive, wrap_tag: :li
+      = active_link_to "Create a new Post", new_post_path, wrap_tag: :li
