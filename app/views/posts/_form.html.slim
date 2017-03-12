@@ -1,0 +1,15 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    .error_explanation
+      - @post.errors.full_messages.each do |message|
+        li= message
+
+  .posts-form
+    p
+      = f.label :title
+      = f.text_field :title
+    p
+      = f.label :content
+      = f.text_field :content
+    p
+      = f.submit
