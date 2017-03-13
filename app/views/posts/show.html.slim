@@ -1,0 +1,7 @@
+b Your event:
+= render @post
+- if @post.comments.exists?
+  .posts-comments
+    b Comments: 
+    - @post.comments.each do |comment|
+      = render "comment", comment: comment
