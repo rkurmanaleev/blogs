@@ -33,14 +33,14 @@ feature "I want to edit previous post title and/or content" do
 
     before { login_as(another_user) }
 
-    context "and failed to access it from" do
-      scenario "post page" do
+    context "and failed to access it" do
+      scenario "from post page" do
         visit posts_path(post)
 
         expect(page).not_to have_content "Edit the Post"
       end
 
-      scenario "posts_path via direct edit link" do
+      scenario "via direct edit link" do
         visit edit_post_path(post)
 
         expect(current_path).to eq root_path
