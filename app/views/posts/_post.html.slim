@@ -4,3 +4,5 @@
   br
   b Content: 
   = post.content
+  br
+  = link_to "Edit the Post", edit_post_path(post) if policy(post).manage?
