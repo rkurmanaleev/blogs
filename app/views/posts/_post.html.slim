@@ -1,6 +1,9 @@
 .recent-posts
   b Title: 
-  = link_to post.title, post_path(post)
+  = link_to post.title, post
   br
   b Content: 
   = post.content
+  br
+  - if policy(post).manage?
+    = link_to "Edit the Post", edit_post_path(post)

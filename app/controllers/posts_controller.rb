@@ -1,35 +1,38 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: :show
+  before_action :authorize_user!, only: %i(edit update)
 
-  def index
-    @posts = current_user.posts.order(created_at: :desc).limit(10)
-  end
-
-  def show
-  end
-
-  def new
-    @post = Post.new
-  end
+  expose_decorated(:post)
+  expose_decorated(:posts) { posts_fetcher }
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    if @post.save
+    post.user = current_user
+    if post.save
       redirect_to posts_path, notice: "Post has been successfully created."
     else
       render :new
     end
   end
 
+  def update
+    if post.update(post_params)
+      redirect_to posts_path, notice: "Post has been successfully updated."
+    else
+      render :edit
+    end
+  end
+
   private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def posts_fetcher
+    current_user.posts.ordered_by_desc.latest
   end
 
   def post_params
     params.require(:post).permit(:title, :content, :user_id)
+  end
+
+  def authorize_user!
+    authorize(post, :manage?)
   end
 end
