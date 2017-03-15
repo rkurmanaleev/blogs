@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user!, only: %i(edit update)
-  before_action :set_post, only: %i(show edit update)
 
   expose(:post)
 
@@ -9,17 +8,14 @@ class PostsController < ApplicationController
     @posts = current_user.posts.order(created_at: :desc).limit(10)
   end
 
-  def show
-  end
-
   def new
-    @post = Post.new
+    post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    if @post.save
+    post = Post.new(post_params)
+    post.user = current_user
+    if post.save
       redirect_to posts_path, notice: "Post has been successfully created."
     else
       render :new
@@ -30,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if post.update(post_params)
       redirect_to posts_path, notice: "Post has been successfully updated."
     else
       render :edit
@@ -38,10 +34,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
 
   def post_params
     params.require(:post).permit(:title, :content, :user_id)
