@@ -1,7 +1,7 @@
-= form_for @post do |f|
-  - if @post.errors.any?
+= form_for post do |f|
+  - if post.errors.any?
     .error_explanation
-      - @post.errors.full_messages.each do |message|
+      - post.errors.full_messages.each do |message|
         li= message
 
   .posts-form
