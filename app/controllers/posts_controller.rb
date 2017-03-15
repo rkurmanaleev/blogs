@@ -22,6 +22,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post.destroy
+    redirect_to posts_path, notice: "Post has been successfully deleted."
+  end
+
   private
 
   def posts_fetcher
