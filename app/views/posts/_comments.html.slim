@@ -1,0 +1,4 @@
+- if @post.comments.exists?
+  .posts-comments
+    b Comments: 
+    = render @post.comments
