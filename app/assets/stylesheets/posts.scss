@@ -1,8 +1,25 @@
 .recent-posts {
-  padding: 5px;
+  padding: 1rem;
 }
 
 .posts-form {
   width: 50%;
-  padding: 5px;
+  padding: 1rem;
+}
+
+.posts-comments {
+  padding-left: 1rem;
+}
+
+.comments {
+  width: 30%;
+  margin: .3rem 0 0 .5rem;
+
+  padding: .3rem;
+  border-style: dotted;
+}
+
+.comment-info {
+  padding-left: 1rem;
+  font-size: .8rem;
 }

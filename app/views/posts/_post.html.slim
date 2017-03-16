@@ -7,4 +7,5 @@
   br
   - if policy(post).manage?
     = link_to "Edit the Post", edit_post_path(post)
+    | or 
     = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }

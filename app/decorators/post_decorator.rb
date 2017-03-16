@@ -1,5 +1,6 @@
 class PostDecorator < ApplicationDecorator
-  delegate :id, :title, :content, :user, :comments, :errors
+  delegate :title, :user_id, :content, :errors
+  decorates_association :comments
 
   def comments?
     object.comments.exists?

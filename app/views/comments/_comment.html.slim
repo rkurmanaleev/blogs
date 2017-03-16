@@ -1,2 +1,4 @@
-= comment.content
-br
+.comments
+  = comment.content
+  .comment-info
+    = " by #{comment.user_full_name} on #{comment.formatted_date}"
