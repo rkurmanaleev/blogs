@@ -7,6 +7,6 @@ class CommentDecorator < ApplicationDecorator
   end
 
   def formatted_date
-    object.created_at.strftime("%Y-%m-%d %H:%M")
+    @formatted_date = object.created_at.strftime("%Y-%m-%d %H:%M")
   end
 end
