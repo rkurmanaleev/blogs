@@ -5,6 +5,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def manage?
-    @post.user == @user
+    @post.user_id == @user.id
   end
 end
