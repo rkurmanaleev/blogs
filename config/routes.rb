@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   resources :posts do
-    resources :comments, only: %i(show destroy)
+    resources :comments, only: %i(new create show destroy)
   end
   resources :users, only: :show
 end
