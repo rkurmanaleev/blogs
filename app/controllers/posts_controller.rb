@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   expose_decorated(:post)
   expose_decorated(:posts) { posts_fetcher }
-  expose_decorated(:comment) { post.comments.build.decorate }
+  expose_decorated(:comment) { comment_fetcher }
   expose_decorated(:comments) { comments_fetcher }
 
   def create
@@ -33,6 +33,10 @@ class PostsController < ApplicationController
 
   def posts_fetcher
     current_user.posts.ordered_by_desc.latest
+  end
+
+  def comment_fetcher
+    post.comments.build
   end
 
   def comments_fetcher
