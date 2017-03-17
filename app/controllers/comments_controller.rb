@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
     else
       render json: comment.errors, status: 422
     end
-  end
 
   private
 
