@@ -1,7 +1,6 @@
 class CommentDecorator < ApplicationDecorator
   delegate :content, :created_on, :user_id
   delegate :full_name, to: :user, prefix: true
-  decorates_association :post
 
   def user_full_name
     @user_full_name ||= object.user.full_name
