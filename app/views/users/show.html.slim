@@ -1,2 +1,11 @@
-b= "Posts of #{user.full_name}:"
+- if (user.posts_count == 10) && (posts.count == 10)
+  b= "All posts of #{user.full_name}:"
+- elsif (user.posts_count > 10) && (posts.count == 10)
+  b= "Recent posts of #{user.full_name}:"
+  .post-links
+    = link_to "See all posts", "?all=true"
+- else
+  b= "All posts of #{user.full_name}:"
+  .post-links
+    = link_to "See Recent posts", user_path(user)
 = render posts
