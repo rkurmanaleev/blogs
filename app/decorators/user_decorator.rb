@@ -5,7 +5,7 @@ class UserDecorator < ApplicationDecorator
     "#{object.full_name} (#{object.email})"
   end
 
-  def last_or_all_comments_header
-    params[:all] ? "All posts of #{object.fullname}": "Recent posts of #{object.full_name}"
+  def posts_count
+    object.posts.count
   end
 end
