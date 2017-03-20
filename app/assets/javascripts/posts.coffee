@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $ ->
   $(".delete-comment").click (e) ->
     e.preventDefault()
@@ -36,14 +35,16 @@ $ ->
       createdAt = data.created_at.substr(0, 10) + " " + data.created_at.substr(11, 5)
       fullName = data.user.full_name
       comment = data.content
+      DivCommentsInfo = "#{comment}<div class='comment-info'> by #{fullName} on #{createdAt}</div>"
+      DivListCommentsToDom = "<div class='list-comments'>#{DivCommentsInfo}</div>"
       messageForm.html("Successfully created a comment").addClass("notice")
       enableButton()
       clearForm()
       if noCommentsDiv.length
         noCommentsDiv.remove()
-        $(".comments").prepend("<b>Comments: </b><div class='posts-comments'><div class='list-comments'>#{comment}<div class='comment-info'> by #{fullName} on #{createdAt}</div></div></div>")
+        $(".comments").prepend("<b>Comments: </b><div class='posts-comments'>#{DivListCommentsToDom}</div>")
       else
-        $(".posts-comments").prepend("<div class='list-comments'>#{comment}<div class='comment-info'> by #{fullName} on #{createdAt}</div></div>")
+        $(".posts-comments").prepend(DivListCommentsToDom)
     ajaxError = ->
       $(".message-form").addClass("alert").html("Some error appeared. Please try later")
       enableButton()
