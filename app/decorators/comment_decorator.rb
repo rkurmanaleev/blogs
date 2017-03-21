@@ -11,6 +11,6 @@ class CommentDecorator < ApplicationDecorator
   end
 
   def user_and_date_information
-    " by #{user_full_name} on #{formatted_date}"
+    " by #{user_full_name} on #{formatted_date}      "
   end
 end
