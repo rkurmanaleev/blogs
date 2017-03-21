@@ -5,6 +5,6 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def delete?
-    @comment.user == @user
+    @comment.user_id == @user.id
   end
 end
