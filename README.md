@@ -10,5 +10,4 @@ Dependencies:
 
 [![Build Status](https://semaphoreci.com/api/v1/ruslankurmanaleev/blogs/branches/141202365-new-comment-via-api/badge.svg)](https://semaphoreci.com/ruslankurmanaleev/blogs)
 Pivotal: https://www.pivotaltracker.com/projects/1985253
-Production:
-
+Production: https://blogfs.herokuapp.com/
