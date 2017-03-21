@@ -1,5 +1,5 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :content, :created_on, :updated_on
+  delegate :content, :created_on, :updated_on, :user_id
   delegate :full_name, to: :user, prefix: true
 
   def user_full_name
