@@ -1,5 +1,8 @@
-- if post.comments?
-  .posts-comments
-    b Comments: 
-    br
-    = render comments
+.comments-list
+  - if post.comments?
+    b Comments:
+    .posts-comments
+      = render comments
+  - else
+    .no-comments
+      | No comments yet...

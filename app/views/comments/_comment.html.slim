@@ -1,4 +1,7 @@
-.comments
+.comments{data=comment.id}
   = comment.content
   .comment-info
-    = " by #{comment.user_full_name} on #{comment.formatted_date}"
+    .comment-message
+    = " by #{comment.user_full_name} on #{comment.formatted_date}     "
+    - if policy(comment).delete?
+      = link_to "Delete it?", "#", class: "delete-comment", data_comment: comment.id, data_post: post.id
