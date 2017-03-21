@@ -14,7 +14,7 @@ feature "User can delete comments" do
     end
   end
 
-  context "User can't tries deletes some other user's comment" do
+  context "User can't delete some other user's comment" do
     let(:another_user) { create(:user) }
     before { login_as another_user }
 
