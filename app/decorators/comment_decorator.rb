@@ -9,4 +9,8 @@ class CommentDecorator < ApplicationDecorator
   def formatted_date
     @formatted_date ||= object.created_at.strftime("%Y-%m-%d %H:%M")
   end
+
+  def user_and_date_information
+    " by #{user_full_name} on #{formatted_date}      "
+  end
 end

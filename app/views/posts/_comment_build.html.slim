@@ -1,0 +1,9 @@
+.new-comment
+  .posts-form
+    b Leave a comment: 
+    .message-form
+    .form.hidden
+      = text_field :comment, :content, id: "content-field"
+      input id="user-field" value=current_user.id type="hidden"
+      input id="post-field" value=post.id type="hidden"
+      = link_to "Save Comment", "#", class: "button", id: "send-form"
