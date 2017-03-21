@@ -2,7 +2,6 @@
   = comment.content
   .comment-info
     .comment-message
-    = " by #{comment.user_full_name} on #{comment.formatted_date}     "
     = comment.user_and_date_information
     - if policy(comment).delete?
       = link_to "Delete it?", "#", class: "delete-comment", data: { comment_id: comment.id, post_id: post.id }
