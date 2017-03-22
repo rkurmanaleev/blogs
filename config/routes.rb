@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i(new create show destroy)
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :all_posts, controller: "users/all_posts", only: :index
+  end
 end
