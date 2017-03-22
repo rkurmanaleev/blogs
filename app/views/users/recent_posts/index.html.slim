@@ -1,0 +1,5 @@
+b= "Recent posts of #{user.full_name}:"
+.post-links
+  = link_to "See all posts", user_all_posts_path(user)
+- posts.each do |post|
+  = render "posts/post", post: post

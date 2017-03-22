@@ -1,11 +1,7 @@
-- if (user.posts_count == 10) && (posts.count == 10)
-  b= "All posts of #{user.full_name}:"
-- elsif (user.posts_count > 10) && (posts.count == 10)
-  b= "Recent posts of #{user.full_name}:"
-  .post-links
-    = link_to "See all posts", "?all=true"
-- else
-  b= "All posts of #{user.full_name}:"
-  .post-links
-    = link_to "See Recent posts", user_path(user)
-= render posts
+b= "Statistics of #{user.full_name}:"
+ul
+  li= user.posts_stat
+  li= user.comments_stat
+= link_to "See All Posts", user_all_posts_path(user)
+br
+= link_to "See Recent Posts", user_recent_posts_path(user)
