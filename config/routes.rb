@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     resources :all_posts, controller: "users/all_posts", only: :index
+    resources :recent_posts, controller: "users/recent_posts", only: :index
   end
 end
