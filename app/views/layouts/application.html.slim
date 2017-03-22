@@ -21,7 +21,10 @@ html class="no-js" lang="en"
     = render "messages"
 
     main.container
-      = yield
+      .row
+        .medium3
+        .medium6 = yield
+        .medium3
 
     = render "footer"
 
