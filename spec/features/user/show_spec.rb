@@ -5,6 +5,7 @@ feature "As authenticated User, I can see any user's post" do
   let!(:posts) { create_list(:post, 12, user: current_user) }
   let(:last_post) { posts.last }
   let(:first_post) { posts.first }
+
   before { visit user_path(current_user) }
 
   scenario "Recent 10 posts" do
