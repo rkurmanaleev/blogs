@@ -1,2 +1,7 @@
-b= "Posts of #{user.full_name}:"
-= render posts
+b= "Statistics of #{user.full_name}:"
+ul
+  li= user.posts_stat
+  li= user.comments_stat
+= link_to "See All Posts", user_all_posts_path(user)
+br
+= link_to "See Recent Posts", user_recent_posts_path(user)
