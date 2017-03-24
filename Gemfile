@@ -8,8 +8,6 @@ gem "rails", "5.0.2"
 # assets
 gem "autoprefixer-rails"
 gem "coffee-rails"
-gem "foundation-icons-sass-rails"
-gem "foundation-rails"
 gem "mini_racer"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
