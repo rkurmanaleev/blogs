@@ -14,17 +14,12 @@ html class="no-js" lang="en"
 
     = javascript_tag "window.App = {}"
 
-    == analytics_init if GA.tracker
-
   body
     = render "navigation"
     = render "messages"
 
     main.container
-      .row
-        .medium3
-        .medium6 = yield
-        .medium3
+      = yield
 
     = render "footer"
 
