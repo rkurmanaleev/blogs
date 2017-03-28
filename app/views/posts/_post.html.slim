@@ -1,11 +1,15 @@
-.recent-posts
-  b Title: 
-  = link_to post.title, post
-  br
-  b Content: 
-  = post.content
-  br
-  - if policy(post).manage?
-    = link_to "Edit the Post", edit_post_path(post)
-    | or 
-    = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }
+.post
+  h3= link_to post.title, post
+  p= post.short_content
+  .post-links
+    pre.marginned-bottom
+      = link_to post.user_full_name, user_path(post.user_id)
+      |  
+      = link_to "Open the Post", post
+      |  
+      = link_to post.comments_stat, post
+      |  
+      - if policy(post).manage?
+        = link_to "Edit the Post", edit_post_path(post)
+        |   
+        = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }
