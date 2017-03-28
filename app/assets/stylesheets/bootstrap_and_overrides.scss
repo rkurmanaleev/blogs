@@ -1,0 +1,58 @@
+@import "twitter-bootstrap-static/bootstrap";
+@import "twitter-bootstrap-static/sprites";
+$small_size: 1rem;
+$medium_size: 2rem;
+$big_size: 3rem;
+$half_size: .5rem;
+$black: #000;
+$lightgray: #C9CFE3;
+
+html {
+  font-size: 20px;
+}
+
+@font-face {
+  font-family: "opensanscondlight";
+  src: font-url("OpenSans-CondLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: lighter;
+}
+
+body {
+  font-family: "opensanscondlight", "Times New Roman", Times, serif;
+  color: $black;
+  font-size: $small_size;
+}
+
+.fixed-top {
+  padding-top: $big_size;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 5px 15px;
+  font-size: $small_size;
+  line-height: $small_size;
+  height: 50px;
+}
+
+h3 {
+  font-size: $medium_size;
+}
+
+.btn-big {
+  font-size: $small_size;
+}
+
+.marginned-bottom {
+  margin-bottom: $big_size;
+}
+
+.marginned-top {
+  margin-top: $big_size;
+}
+
+.blog-footer {
+  background-color: $lightgray;
+  width: 100%;
+}

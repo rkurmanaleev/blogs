@@ -39,7 +39,7 @@ $ ->
       link = "<a class='delete-comment' data-comment-id='#{commentId}' data-post-id='#{postId}' href='#'>Delete it?</a>"
       DivCommentsInfo = "#{comment}<div class='comment-info'> by #{fullName} on #{createdAt}    #{link}</div>"
       DivListCommentsToDom = "<div class='list-comments' data-comment-id='#{commentId}'>#{DivCommentsInfo}</div>"
-      messageForm.html("Successfully created a comment").addClass("notice")
+      messageForm.html("Successfully created a comment").addClass("alert alert-success")
       enableButton()
       clearForm()
       if noCommentsDiv.length
@@ -48,7 +48,7 @@ $ ->
       else
         $(".posts-comments").prepend(DivListCommentsToDom)
     ajaxError = ->
-      messageForm.addClass("alert").html("Some error appeared. Please try later")
+      messageForm.addClass("alert alert-danger").html("Some error appeared. Please try later")
       enableButton()
     sendRequestAndRenderRespond = ->
       postId = $("#post-field").val()
@@ -67,7 +67,7 @@ $ ->
         error: (error) ->
           ajaxError()
     renderFailureMessage = ->
-      messageForm.addClass("alert").html("Text field couldn't be blank!")
+      messageForm.addClass("alert alert-danger").html("Text field couldn't be blank!")
       enableButton()
 
     e.preventDefault()
@@ -78,4 +78,4 @@ $ ->
       renderFailureMessage()
 
   $(".message-form").click ->
-    $(@).html("").removeClass("notice")
+    $(@).html("").removeClass("alert alert-danger alert-success")
