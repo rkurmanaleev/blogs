@@ -5,7 +5,7 @@ feature "User creates a Post" do
 
   def fill_new_post_attributes(title)
     visit root_path
-    click_on "Create a new Post"
+    click_on "Create a Post"
     fill_in "Title", with: title
     fill_in "Content", with: "Some kind of content for test purposes"
     click_on "Create Post"

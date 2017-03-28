@@ -14,6 +14,7 @@ feature "As the User I want to be able to delete posts" do
 
   context "that belong to Another Users" do
     let(:another_user) { create(:user) }
+
     before { login_as another_user }
 
     scenario "that belong to Another Users" do

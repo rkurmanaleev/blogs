@@ -13,7 +13,6 @@ feature "Cancel Account" do
     expect(page).to have_content("Sign in")
     expect(page).to have_content("You need to sign in or sign up before continuing.")
 
-    click_link "Sign in"
     fill_form(:user, current_user.attributes.slice(:email, :password))
     click_button "Sign in"
 
