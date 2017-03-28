@@ -16,14 +16,34 @@ html class="no-js" lang="en"
 
   body
     = render "navigation"
-    = render "messages"
 
-    main.container
-      = yield
+    .container.marginned-top.marginned-bottom
+      = bootstrap_flash
+      .row
+        .col-sm-8.blog-main
+          = yield
 
-    = render "footer"
+        .col-sm-3.col-sm-offset-1.blog-sidebar
+          .sidebar-module.sidebar-module-inset
+            h4 About
+            p
+              | Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+          .sidebar-module
+            h4 Archives
+            ol.list-unstyled
+              li
+                = link_to "March", "adsad"
+                = link_to "March2", "adsad2"
+                = link_to "March3", "adsad3"
+                = link_to "March4", "adsad4"
+          .sidebar-module
+            h4 Elsewhere
+            ol.list-unstyled
+              = link_to "Twitter", "adsad"
+              = link_to "Google", "adsad2"
+              = link_to "VK", "adsad3"
 
-    javascript:
-      App.currentUserData = #{{current_user.to_json}};
+    footer.clearfix
+      = render "footer"
 
     = javascript_include_tag :application
