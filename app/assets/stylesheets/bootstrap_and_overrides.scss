@@ -5,7 +5,7 @@ $medium_size: 2rem;
 $big_size: 3rem;
 $half_size: .5rem;
 $black: #000;
-$lightgray: #C9CFE3;
+$lightgray: #c9cfe3;
 
 html {
   font-size: 20px;
@@ -19,8 +19,8 @@ html {
 }
 
 body {
-  font-family: "opensanscondlight", "Times New Roman", Times, serif;
   color: $black;
+  font-family: "opensanscondlight", "Times New Roman", Times, serif;
   font-size: $small_size;
 }
 
@@ -29,11 +29,12 @@ body {
 }
 
 .navbar-brand {
-  float: left;
+  height: 50px;
   padding: 5px 15px;
+  float: left;
   font-size: $small_size;
   line-height: $small_size;
-  height: 50px;
+
 }
 
 h3 {
@@ -50,9 +51,4 @@ h3 {
 
 .marginned-top {
   margin-top: $big_size;
-}
-
-.blog-footer {
-  background-color: $lightgray;
-  width: 100%;
 }
