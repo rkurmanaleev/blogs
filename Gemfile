@@ -11,6 +11,7 @@ gem "coffee-rails"
 gem "mini_racer"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
