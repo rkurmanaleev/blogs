@@ -6,8 +6,8 @@ feature "Resend Confirmation Email" do
   scenario "Visitor resends email confirmation instructions" do
     visit new_user_confirmation_path
 
-    fill_in "Enter your email address", with: user.email
-    click_button "Resend confirmation instructions"
+    fill_in "user_email", with: user.email
+    click_button "Resend email"
 
     open_email(user.email)
 

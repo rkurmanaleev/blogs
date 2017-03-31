@@ -7,7 +7,10 @@ feature "Sign Up" do
   scenario "Visitor signs up" do
     visit new_user_registration_path
 
-    fill_form(:user, user_attributes)
+    fill_in "user_full_name", with: user_attributes
+    fill_in "user_email", with: user_attributes[:email]
+    fill_in "user_password", with: user_attributes
+    fill_in "user_password_confirmation", with: user_attributes
     click_button "Sign up"
 
     open_email(registered_user.email)
