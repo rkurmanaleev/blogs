@@ -127,28 +127,6 @@ h3 {
   li:last-child {
     border-bottom: 0;
   }
-
-}
-
-.post p {
-  color: $post_p_color;
-}
-
-.post h3 .h3 {
-  margin: $medium_size 0;
-  font-size: 4rem;
-}
-
-.post h6 .h6 {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.post hr {
-  margin: 5rem 0;
-}
-
-.post .read-more {
-  margin: 2rem 0;
 }
 
 .row-centered {
@@ -161,4 +139,3 @@ h3 {
   float: none;
   text-align: left;
 }
-
