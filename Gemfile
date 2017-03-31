@@ -61,6 +61,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "simplecov"
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end
