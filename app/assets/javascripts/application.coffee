@@ -6,6 +6,9 @@
 #
 #= require jquery
 #= require jquery-ujs
+#= require react
+#= require react_ujs
+#= require components
 #= require twitter/bootstrap
 #= require current_user
 #= require posts
