@@ -23,6 +23,7 @@ end
 gem "active_link_to"
 gem "inky-rb", require: "inky"
 gem "metamagic"
+gem "react-rails"
 gem "simple_form"
 gem "slim"
 
