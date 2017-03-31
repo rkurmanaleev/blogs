@@ -20,4 +20,12 @@ class PostDecorator < ApplicationDecorator
   def short_content
     @short_content ||= h.truncate(object.content, length: TRUNCATED_TEXT_LENGTH, separator: " ")
   end
+
+  def created_date
+    l object.created_at, format: :long_date
+  end
+
+  def post_user_path
+    h.user_path(object.user_id)
+  end
 end
