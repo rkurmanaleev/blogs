@@ -1,13 +1,15 @@
 .list-comments{data-comment-id=comment.id}
   .row
-    .col-sx-2.col-sm-2.col-md-2.col-lg-2.right-line
+    .col-sx-2.col-sm-2.col-md-2.col-lg-2
       = image_tag("no-avatar", size: "50x50", alt: "User's avatar")
       br
       = link_to "User FN page", "#"
-    .col-sx-7.col-sm-7.col-md-7.col-lg-7
+    .col-sx-7.col-sm-7.col-md-7.col-lg-7.left-line
       = comment.content
       .comment-info
         .comment-message
         = comment.user_and_date_information
         - if policy(comment).delete?
           = link_to "Delete it?", "#", class: "delete-comment", data: { comment_id: comment.id, post_id: post.id }
+
+= react_component("Comment", { data: comment })

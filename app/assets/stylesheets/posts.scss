@@ -10,10 +10,11 @@
   margin-bottom: .5rem;
   border-style: dotted;
 
-  .right-line {
-    border-right: solid 1px;
-    border-right-color: $sidebar_li;
+  .left-line {
+    border-left: solid 1px;
+    border-left-color: $sidebar_li;
   }
+
 }
 
 .comment-info {
