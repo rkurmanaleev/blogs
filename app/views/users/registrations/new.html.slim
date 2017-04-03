@@ -1,28 +1,13 @@
-.row
-  .columns
-    h2 = title("Sign up")
-
-.row
-  .medium-5.columns
-    = simple_form_for resource,
-        as: resource_name,
-        url: registration_path(resource_name) do |f|
-
-      legend
-        | Create your
-        '
-        strong Rails Base example site
-        '
-        | account
-
-      .form-inputs
-        = f.input :full_name, required: true, autofocus: true
-        = f.input :email, required: true
-        = f.input :password, required: true
-        = f.input :password_confirmation, required: true
-
-      .form-actions
-        = f.button :submit, "Sign up"
-
-  .medium-5.medium-offset-1.columns.end
-    = render "users/shared/links"
+.col-sx-6.col-md-6.col-lg-6.col-md-offset-3
+  h2.text-center = title("Sign up")
+  = simple_form_for resource,
+    as: resource_name,
+    url: registration_path(resource_name),
+    class: "form-horizontal" do |f|
+    .form-group
+      = f.input :full_name, required: true, autofocus: true, class: "form-control", placeholder: "Your full name", label: false
+      = f.input :email, required: true, class: "form-control", placeholder: "Your email", label: false
+      = f.input :password, required: true, class: "form-control", placeholder: "Password", label: false
+      = f.input :password_confirmation, required: true, class: "form-control", placeholder: "Password again", label: false
+      = f.button :submit, "Sign up", class: "btn btn-success form-control"
+  = render "users/shared/links"

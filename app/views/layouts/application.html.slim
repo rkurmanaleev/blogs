@@ -7,28 +7,26 @@ html class="no-js" lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="robots" content="NOODP,NOYDIR"
 
-    = metamagic site: "RailsBase", title: %i(title site), separator: " - "
+    = metamagic site: "Blog FS", title: %i(title site), separator: " - "
     = csrf_meta_tags
 
     = stylesheet_link_tag :application
 
     = javascript_tag "window.App = {}"
 
-    == analytics_init if GA.tracker
-
   body
     = render "navigation"
-    = render "messages"
 
-    main.container
+    .container.marginned-top.marginned-bottom
+      = bootstrap_flash
       .row
-        .medium3
-        .medium6 = yield
-        .medium3
+        .col-sx-12.col-sm-12.col-md-12.col-lg-12.blog-main
+          = yield
 
-    = render "footer"
-
-    javascript:
-      App.currentUserData = #{{current_user.to_json}};
+          - if user_signed_in?
+            .col-sx-3.col-sm-3.col-md-3.col-lg-3.blog-sidebar.pull-right
+              = render "sidebar"
+    footer.clearfix
+      = render "footer"
 
     = javascript_include_tag :application

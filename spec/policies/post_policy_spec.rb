@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe PostPolicy do
   subject(:policy) { described_class }
+
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:post) { build(:post, user: user) }

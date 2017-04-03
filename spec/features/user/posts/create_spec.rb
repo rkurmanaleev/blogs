@@ -4,8 +4,7 @@ feature "User creates a Post" do
   include_context "current user signed in"
 
   def fill_new_post_attributes(title)
-    visit root_path
-    click_on "Create a new Post"
+    visit new_post_path
     fill_in "Title", with: title
     fill_in "Content", with: "Some kind of content for test purposes"
     click_on "Create Post"

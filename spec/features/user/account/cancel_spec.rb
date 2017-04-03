@@ -8,12 +8,11 @@ feature "Cancel Account" do
   end
 
   scenario "User cancels account" do
-    click_link "Cancel my account"
+    click_link "Yes please, cancel my account"
 
     expect(page).to have_content("Sign in")
     expect(page).to have_content("You need to sign in or sign up before continuing.")
 
-    click_link "Sign in"
     fill_form(:user, current_user.attributes.slice(:email, :password))
     click_button "Sign in"
 

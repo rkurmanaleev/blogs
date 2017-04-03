@@ -8,11 +8,10 @@ gem "rails", "5.0.2"
 # assets
 gem "autoprefixer-rails"
 gem "coffee-rails"
-gem "foundation-icons-sass-rails"
-gem "foundation-rails"
 gem "mini_racer"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
@@ -33,7 +32,6 @@ gem "decent_exposure"
 gem "devise"
 gem "draper"
 gem "flamegraph"
-gem "google-analytics-rails"
 gem "health_check"
 gem "interactor"
 gem "kaminari"
@@ -63,6 +61,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "simplecov"
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end

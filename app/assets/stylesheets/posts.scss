@@ -1,29 +1,47 @@
-.recent-posts {
-  padding: 1rem;
-}
-
 .posts-form {
-  width: 50%;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .posts-comments {
   padding-left: 1rem;
 }
 
-.comments {
-  padding-left: 1rem;
-}
-
 .list-comments {
-  width: 30%;
-  margin: .3rem 0 0 .5rem;
-
-  padding: .3rem;
+  margin-bottom: .5rem;
   border-style: dotted;
+
+  .right-line {
+    border-right: solid 1px;
+    border-right-color: $sidebar_li;
+  }
 }
 
 .comment-info {
   padding-left: 1rem;
-  font-size: .8rem;
+  font-size: 1.3rem;
+}
+
+.post {
+  p {
+  color: $post_p_color;
+  }
+
+  h3
+  .h3 {
+    margin: $medium_size 0;
+    font-size: 4rem;
+  }
+
+  h6
+  .h6 {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  hr {
+    margin: 5rem 0;
+  }
+
+  .read-more {
+    margin: 2rem 0;
+  }
 }

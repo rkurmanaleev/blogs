@@ -1,18 +1,12 @@
-.row
-  .columns
-    h2 = title("Forgot your password?")
+.col-sx-4.col-sm-4.col-md-4.col-lg-4.col-md-offset-4
+  h2.text-center = title("Forgot the password?")
+  = simple_form_for resource,
+      as: resource_name,
+      url: password_path(resource_name),
+      html: { method: :post },
+      class: "form-horizontal" do |f|
+    .form-group
+      = f.input :email, required: true, autofocus: true, class: "form-control", placeholder: "Your email", label: false
+      = f.button :submit, "Send instructions", class: "btn btn-success form-control"
+  = render "users/shared/links"
 
-.row
-  .medium-5.columns
-    = simple_form_for resource,
-        as: resource_name,
-        url: password_path(resource_name),
-        html: { method: :post } do |f|
-
-      .form-inputs
-        = f.input :email, required: true
-      .form-actions
-        = f.button :submit, "Send me reset password instructions"
-
-  .medium-5.medium-offset-1.columns.end
-    = render "users/shared/links"

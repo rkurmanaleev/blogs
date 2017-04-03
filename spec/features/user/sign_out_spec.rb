@@ -5,7 +5,7 @@ feature "Sign Out" do
 
   scenario "User signs out" do
     visit "/"
-    click_link "Sign out"
+    click_on "Sign out"
 
     expect(page).to have_content("Sign in")
   end

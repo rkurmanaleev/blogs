@@ -1,23 +1,13 @@
-.row
-  .columns
-    h2 = title("Change password")
-
-.row
-  .medium-5.columns
-    = simple_form_for resource,
-        as: resource_name,
-        url: password_path(resource_name),
-        html: { method: :put } do |f|
-
+.col-sx-4.col-sm-4.col-md-4.col-lg-4.col-md-offset-4
+  h2.text-center = title("Change password")
+  = simple_form_for resource,
+      as: resource_name,
+      url: password_path(resource_name),
+      html: { method: :put },
+      class: "form-horizontal" do |f|
+    .form-group
       = f.input :reset_password_token, as: :hidden
       = f.full_error :reset_password_token
-
-      .form-inputs
-        = f.input :password, required: true
-        = f.input :password_confirmation, required: true
-
-      .form-actions
-        = f.button :submit, "Update password"
-
-  .medium-5.medium-offset-1.columns.end
-    = render "users/shared/links"
+      = f.input :password, required: true, class: "form-control", placeholder: "Password", label: false, hint: false
+      = f.input :password_confirmation, class: "form-control", placeholder: "Password confirmation", label: false
+      = f.button :submit, "Update password", class: "btn btn-success form-control"

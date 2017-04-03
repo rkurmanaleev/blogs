@@ -1,15 +1,10 @@
-= form_for post do |f|
-  - if post.errors.any?
-    .error_explanation
-      - post.errors.full_messages.each do |message|
-        li= message
-
-  .posts-form
-    p
-      = f.label :title
-      = f.text_field :title
-    p
-      = f.label :content
-      = f.text_field :content
-    p
-      = f.submit
+.col-sm-8.col-centered
+  = simple_form_for(post, html: { class: "form-horizontal" }) do |f|
+    .form-group
+      = f.input :title, error: "Title can't be blank", class: "form-control"
+      = f.input :content, error: "Content can't be blank", as: "text", class: "form-control"
+    .row
+      .col-sm-6.col-md-6
+        = f.button :submit, class: "btn btn-success form-control"
+      .col-sm-3.col-md-3.col-md-offset-3.text-right
+        = link_to "Back", posts_path, class: "btn btn-warning btn-big"
