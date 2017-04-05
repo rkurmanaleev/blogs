@@ -1,16 +1,21 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :content, :created_at, :user_id
+  delegate :content, :created_at, :user_id, :post_id, :updated_at, :user
   delegate :full_name, to: :user, prefix: true
+  decorates_association :post
+
+  def user
+    user_full_name
+  end
+
+  def updated_at
+    user_full_name
+  end
 
   def user_full_name
     @user_full_name ||= object.user.full_name
   end
 
   def formatted_date
-    @formatted_date ||= object.created_at.strftime("%Y-%m-%d %H:%M")
-  end
-
-  def user_and_date_information
-    " by #{user_full_name} on #{formatted_date}      "
+    @formatted_date ||= l object.created_at, format: :ru
   end
 end

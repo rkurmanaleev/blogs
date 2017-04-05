@@ -2,24 +2,18 @@
   padding-bottom: 1rem;
 }
 
-.posts-comments {
-  padding-left: 1rem;
-}
-
-.list-comments {
-  margin-bottom: .5rem;
-  border-style: dotted;
-
-  .left-line {
-    border-left: solid 1px;
-    border-left-color: $sidebar_li;
-  }
-
+.comments-header {
+  margin: 2rem 0;
+  font-weight: bold;
 }
 
 .comment-info {
-  padding-left: 1rem;
+  margin-top: 1rem;
   font-size: 1.3rem;
+}
+
+.list-comments {
+  margin-top: 2rem;
 }
 
 .post {
@@ -45,4 +39,28 @@
   .read-more {
     margin: 2rem 0;
   }
+}
+
+
+.comment-content {
+  border: 1px solid rgba(39, 55, 64, 0.09);
+  border-radius: 4px;
+  font-size: 1em;
+  padding: 1.5em 1.3em;
+
+  p {
+    margin-bottom: 1.2em;
+  }
+}
+
+.comment-user-date {
+  margin: 2rem 0;
+}
+
+.avatar {
+  border-radius: 100%;
+  float: left;
+  margin-right: 1rem;
+  width: 60px;
+  height: 60px;
 }

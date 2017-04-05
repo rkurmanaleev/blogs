@@ -1,0 +1,12 @@
+@dateFormat = (date) ->
+  forceTwoDigits = (val) ->
+    if val < 10
+      return "0#{val}"
+    return val
+  data = new Date(date);
+  year = data.getFullYear()
+  month = forceTwoDigits(data.getMonth()+1)
+  day = forceTwoDigits(data.getDate())
+  hour = forceTwoDigits(data.getHours())
+  minute = forceTwoDigits(data.getMinutes())
+  return "#{day}.#{month}.#{year} #{hour}:#{minute}"

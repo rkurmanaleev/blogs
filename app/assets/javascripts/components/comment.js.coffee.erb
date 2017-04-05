@@ -1,28 +1,48 @@
 @Comment = React.createClass
-  getInitialState: ->
-    comment: @props.data
-  getDefaultProps: ->
-    comment: []
+  handleDelete: (e) ->
+    e.preventDefault()
+    $.ajax
+      method: 'DELETE'
+      url: "/posts/#{@props.comment.post_id}/comments/#{@props.comment.id}"
+      dataType: 'JSON'
+      success: () =>
+        @props.handleDeleteRecord @props.comment
   render: ->
-    console.log(@props.data)
+    comment = @props.comment
+    current_user = @props.current_user
     React.DOM.div
       className: "list-comments"
       React.DOM.div
-        className: "row"
+        className: "row comment-user-date"
         React.DOM.div
-          className: "col-sx-2 col-sm-2 col-md-2 col-lg-2"
+          className: "col-sx-1 col-sm-1 col-md-1 col-lg-1"
           React.DOM.img
             src: "<%= asset_url('no-avatar.png') %>"
-            width: "50x50"
+            className: "avatar"
+            width: "96x96"
             alt: "User's avatar"
-          React.DOM.div
-            className: "text-left"
-            "Blabla"
         React.DOM.div
-          className: "col-sx-7 col-sm-7 col-md-7 col-lg-7"
-          "#{@props.data.content}"
+          className: "col-sx-8 col-sm-8 col-md-8 col-lg-8"
+          React.DOM.div
+            className: "comment-full-name"
+            React.DOM.a
+              href: "/users/#{comment.user_id}"
+              "User #{comment.user_id}"
+          React.DOM.div
+            className: "comment-date"
+            "#{dateFormat(comment.created_at)}"
+      React.DOM.div
+        className: "row"
+        React.DOM.div
+          className: "col-sx-12 col-sm-12 col-md-12 col-lg-12"
+          React.DOM.div
+            className: "comment-content"
+            comment.content
+          if comment.user_id == current_user
             React.DOM.div
-              className: "comment-info"
-              React.DOM.div
-                className: "comment-message"
-                "Created by #{@props.data.user_id} on #{@props.data.created_at}"
+              className: "comment-info text-right"
+              React.DOM.a
+                href: "#"
+                className: "delete-comment"
+                onClick: @handleDelete
+                "Delete it?"

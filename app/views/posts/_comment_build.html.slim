@@ -1,10 +1,2 @@
-.new-comment
-  .posts-form
-    b Leave a comment: 
-    .message-form
-    .form
-      .form-group
-        = text_area :comment, :content, id: "content-field", rows: 1.5, class: "form-control"
-        input id="user-field" value=current_user.id type="hidden"
-        input id="post-field" value=post.id type="hidden"
-      = link_to "Save Comment", "#", class: "btn btn-default btn-big", id: "send-form"
+
+= react_component("CreateComment", { data: comment, user_id: current_user.id})
