@@ -4,12 +4,8 @@
 # It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 # the compiled file.
 #
-#= require react
-#= require react_ujs
-#= require components
 #= require jquery
 #= require jquery-ujs
 #= require twitter/bootstrap
+#= require bootstrap
 #= require current_user
-#= require posts
-#= require_tree .
