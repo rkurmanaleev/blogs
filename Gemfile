@@ -24,11 +24,11 @@ end
 gem "active_link_to"
 gem "inky-rb", require: "inky"
 gem "metamagic"
-gem "react-rails"
 gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "active_model_serializers", "~> 0.10.5"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
