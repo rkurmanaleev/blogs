@@ -8,6 +8,14 @@ class CommentsController < ApplicationController
 
   respond_to :json
 
+  def index
+    if is_a_number?(params[:post_id])
+      render json: comments, status: 200
+    else
+      render json: {error: "Params error"}, status: 422
+    end
+  end
+
   def create
     if comment.save
       render json: comment, include: { user: { only: :full_name } }, status: 200
@@ -25,6 +33,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def is_a_number?(string)
+    Float(string) != nil rescue false
+  end
 
   def comments_fetch
     post.comments.ordered_by_desc
