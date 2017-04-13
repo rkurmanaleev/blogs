@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "As user I want to view my previous post with comments" do
   include_context "current user signed in"
-  include_context "post with comment"
+  let!(:post) { create(:post, user: current_user) }
 
   RSpec::Matchers.define :have_posts_content_and_title_on_post_page do
     match do
@@ -28,16 +28,6 @@ feature "As user I want to view my previous post with comments" do
       visit post_path(post)
 
       expect(page).to have_posts_content_and_title_on_post_page
-    end
-  end
-
-  context "I can see comments" do
-    let(:posts_comments) { find(".posts-comments") }
-
-    scenario "to each post" do
-      visit post_path(post)
-
-      expect(posts_comments).to have_content comment.content
     end
   end
 end
