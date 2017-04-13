@@ -45,8 +45,8 @@ var CreateComment = React.createClass({
         <div id="form-message"></div>
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <textarea className="form-control" type="text" placeholder="Type comment here..."
-              rows="1.5" id="content-field" name="content" onChange={this.handleChange} />
+            <textarea id="content-field" className="form-control" type="text"
+              placeholder="Type comment here..." rows="1.5" name="content" onChange={this.handleChange} />
             <input type="hidden" id="user-field" value={this.user} />
             <input type="hidden" id="post-field" value={this.post} />
           </div>
