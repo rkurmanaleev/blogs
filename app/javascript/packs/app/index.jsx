@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import Comments from "./app/components/comments"
+import Comments from "./components/comments"
 
 var Application = React.createClass({
   render() {
