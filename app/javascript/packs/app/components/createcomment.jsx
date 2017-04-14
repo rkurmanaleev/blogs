@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import AlertMessage from "../utils/alertmessage"
 
 var CreateComment = React.createClass({
   getInitialState: function() {
@@ -12,24 +11,30 @@ var CreateComment = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault();
+    let props = this.props;
+    let state = this.state;
     $.ajax({
       type: "POST",
-      url: "/posts/"+this.props.post+"/comments/",
+      url: "/posts/"+props.post+"/comments/",
       data: {
         comment: {
-          content: this.state.content,
-          post_id: this.props.post,
-          user_id: this.props.user
+          content: state.content,
+          post_id: props.post,
+          user_id: props.user
         }
       },
       dataType: "JSON",
       success: function(data) {
-        this.props.handleNewRecord(data);
+        props.handleNewRecord(data);
         this.setState(this.getInitialState());
         $("#content-field").val("");
+        $("#form-message").html('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>Successfully created the comment</div>');
+        $("#form-message").fadeOut(3000, function(){
+          $(this).html("").removeClass("alert alert-success alert-warning").show();
+        });
       }.bind(this),
       error: function(data) {
-        console.log(data)
+        return(< AlertMessage type = "warning" message = { "Error appeared:" + data } />);
       }.bind(this)
     });
   },
