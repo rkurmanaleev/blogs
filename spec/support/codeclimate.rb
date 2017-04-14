@@ -1,4 +1,4 @@
 if ENV["CI"]
-  require 'simplecov'
+  require "simplecov"
   SimpleCov.start
 end
