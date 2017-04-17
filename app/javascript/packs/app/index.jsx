@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import Comments from "./components/comments"
 
 var Application = React.createClass({
+
   render() {
     return(
       <div>
@@ -12,6 +13,8 @@ var Application = React.createClass({
   }
 });
 
-ReactDOM.render(
+if($("#show-post-comment").length > 0) {
+  ReactDOM.render(
   < Application />, document.getElementById('show-post-comment'),
-)
+  )
+}
