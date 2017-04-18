@@ -1,6 +1,6 @@
 {
-  "name": "Blog FS",
-  "description": "Portfolio's app",
+  "name": "BlogFS",
+  "description": "Portfolio app",
   "version": "1.0.0",
   "engines": {
     "node": "7.9.0"
