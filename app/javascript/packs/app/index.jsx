@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import Comments from "./components/comments"
 
-var Application = React.createClass({
-
+class Application extends React.Component {
   render() {
     return(
       <div>
@@ -11,7 +10,7 @@ var Application = React.createClass({
       </div>
     )
   }
-});
+}
 
 if($("#show-post-comment").length > 0) {
   ReactDOM.render(

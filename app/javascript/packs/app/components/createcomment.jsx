@@ -1,32 +1,37 @@
 import React, { Component } from "react"
 
-var CreateComment = React.createClass({
-  getInitialState: function() {
-    return(
-      content: ""
-    )
-  },
+class CreateComment extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: "",
+      post: this.props.post,
+      user: this.props.user
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleChange(e) {
     this.setState({content: e.target.value})
-  },
+  }
   handleSubmit(e) {
     e.preventDefault();
-    let props = this.props;
-    let state = this.state;
     $.ajax({
       type: "POST",
-      url: "/posts/"+props.post+"/comments/",
+      url: "/posts/"+this.state.post+"/comments/",
       data: {
         comment: {
-          content: state.content,
-          post_id: props.post,
-          user_id: props.user
+          content: this.state.content,
+          post_id: this.props.post,
+          user_id: this.props.user
         }
       },
       dataType: "JSON",
       success: function(data) {
-        props.handleNewRecord(data);
-        this.setState(this.getInitialState());
+        this.props.handleNewRecord(data);
+        this.setState(this.state);
         $("#content-field").val("");
         $("#form-message").html('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>Successfully created the comment</div>');
         $("#form-message").fadeOut(3000, function(){
@@ -37,12 +42,12 @@ var CreateComment = React.createClass({
         return(< AlertMessage type = "warning" message = { "Error appeared:" + data } />);
       }.bind(this)
     });
-  },
+  }
   valid() {
     if (this.state.content.length > 0){
       return(true)
     }
-  },
+  }
   render() {
     return(
       <div className="posts-form">
@@ -62,7 +67,7 @@ var CreateComment = React.createClass({
       </div>
     )
   }
-});
+}
 
 CreateComment.defaultProps = {
   content: "",

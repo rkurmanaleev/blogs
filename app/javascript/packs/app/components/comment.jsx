@@ -1,7 +1,18 @@
 import React, { Component } from "react"
 import Time from "../utils/time"
 
-var Comment = React.createClass({
+class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      post: this.props.post,
+      user: this.props.user,
+      comment: this.props.comment
+    };
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
   deleteLink(user) {
     let current_user = this.props.user;
     if(user === current_user) {
@@ -13,12 +24,12 @@ var Comment = React.createClass({
         </div>
       )
     }
-  },
+  }
   userLink(id, userfullname) {
     return(
       <a href={"/users/"+id}> {userfullname} </a>
     )
-  },
+  }
   handleDelete(e){
     e.preventDefault();
     $.ajax({
@@ -29,7 +40,7 @@ var Comment = React.createClass({
         this.props.handleDeleteRecord(this.props.comment);
       }.bind(this)
     })
-  },
+  }
   render() {
     let comment = this.props.comment.attributes;
     return(
@@ -58,6 +69,6 @@ var Comment = React.createClass({
       </div>
     )
   }
-});
+}
 
 export default Comment;

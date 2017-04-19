@@ -1,13 +1,13 @@
 import React from 'react'
 
-var Time = React.createClass({
+class Time extends React.Component {
   forceTwoDigits(val){
     if (val < 10) {
       return("0"+val)
     }else{
       return(val)
     }
-  },
+  }
   format(date) {
     let data = new Date(date);
     let year = data.getFullYear();
@@ -16,7 +16,7 @@ var Time = React.createClass({
     let hour = this.forceTwoDigits(data.getHours());
     let minute = this.forceTwoDigits(data.getMinutes());
     return(day + "." + month + "." + year + " " + hour + ":" + minute);
-  },
+  }
   render() {
     return(
       <div>
@@ -24,6 +24,6 @@ var Time = React.createClass({
       </div>
     )
   }
-});
+}
 
 export default Time;
