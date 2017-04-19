@@ -5,12 +5,6 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      post: this.props.post,
-      user: this.props.user,
-      comment: this.props.comment
-    };
-
     this.handleDelete = this.handleDelete.bind(this);
   }
   deleteLink(user) {
