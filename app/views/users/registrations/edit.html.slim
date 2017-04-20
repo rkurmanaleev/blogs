@@ -10,6 +10,7 @@
       = f.input :email, required: true, class: "form-control", placeholder: "Your email", label: false
       = f.input :password, required: false, class: "form-control", placeholder: "Set new password", label: false, autocomplete: :off
       = f.input :password_confirmation, required: false, class: "form-control", placeholder: "Confirm password", label: false
+      = f.input :avatar_image, as: :attachment, direct: true, presigned: true
       = f.button :submit, "Update", class: "btn btn-success form-control"
   br
   p.text-center
@@ -18,8 +19,9 @@
       data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger form-control"
 
 .col-sx-3.col-sm-3.col-md-3.col-lg-3.col-md-offset-1
-  h2.text-center Upload the Avatar
-  p = image_tag("no-avatar")
-  p
-    input{placeholder="Browse file..." class="form-control"}
-  = link_to "Send File", "#", class: "btn btn-success form-control"
+  .user-avatar
+    h2.text-center Upload the Avatar
+    - if @user.avatar_image
+      p = image_tag attachment_url(@user, :avatar_image, :fill, 300, 300, format: "jpg")
+    - else
+      p = image_tag("no-avatar")
