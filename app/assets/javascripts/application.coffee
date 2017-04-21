@@ -8,4 +8,7 @@
 #= require jquery-ujs
 #= require twitter/bootstrap
 #= require bootstrap
+#= require refile
 #= require current_user
+#= require posts
+#= require users
