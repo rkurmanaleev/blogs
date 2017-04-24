@@ -9,7 +9,7 @@ feature "As the user I would like to change my Avatar" do
     click_on "Update"
   end
 
-  scenario "with the picture successfully" do
+  scenario "with the picture successfully", js: true do
     change_avatar("images", "no-avatar.png")
 
     expect(page).to have_content "Your account has been updated successfully."
