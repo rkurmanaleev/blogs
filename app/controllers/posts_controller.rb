@@ -4,8 +4,6 @@ class PostsController < ApplicationController
 
   expose_decorated(:post)
   expose_decorated(:posts) { posts_fetcher }
-  expose_decorated(:comment) { comment_fetcher }
-  expose(:comments) { comments_fetcher }
 
   def create
     post.user = current_user
@@ -33,14 +31,6 @@ class PostsController < ApplicationController
 
   def posts_fetcher
     current_user.posts.ordered_by_desc.latest
-  end
-
-  def comment_fetcher
-    post.comments.build
-  end
-
-  def comments_fetcher
-    Comment.where(post_id: post.id).includes(:user)
   end
 
   def post_params

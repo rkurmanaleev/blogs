@@ -11,11 +11,9 @@
     p = post.short_content
     .read-more
       = link_to "Read more", post
-  .post-links
-    pre.marginned-bottom
-      = link_to post.comments_stat, post
-      |  
-      - if policy(post).manage?
+  - if policy(post).manage?
+    .post-links
+      pre.marginned-bottom
         = link_to "Edit the Post", edit_post_path(post)
         |   
         = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }
