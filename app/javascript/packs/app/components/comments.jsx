@@ -26,11 +26,7 @@ class Comments extends React.Component {
     })
   }
   stateIsNull(){
-    if ((this.state === null)||(this.state.comments.length < 1)) {
-      return(true)
-    } else {
-      return(false)
-    }
+    return ((this.state === null)||(this.state.comments.length < 1))
   }
   getCommentsNumber() {
     if (this.stateIsNull()){
@@ -58,14 +54,14 @@ class Comments extends React.Component {
       for (let comment of this.state.comments) {
         all_comments.push(
           < Comment key = { comment.id } post = { current_post } comment = { comment }
-          user = { current_user } handleDeleteRecord = { this.deleteComment } />
+          current_user = { current_user } handleDeleteRecord = { this.deleteComment } />
         )
       }
     };
     return(
       <div>
         <div>
-          < CreateComment user = {current_user} post = {current_post} handleNewRecord={this.addComment}/>
+          < CreateComment user_id = {current_user} post_id = {current_post} handleNewRecord={this.addComment}/>
         </div>
         <div className="comments">
           <div className="posts-comments">

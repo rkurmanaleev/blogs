@@ -8,7 +8,7 @@ class Comment extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   deleteLink(user) {
-    let current_user = this.props.user;
+    let current_user = this.props.current_user;
     if(user === current_user) {
       return(
         <div className="comment-info text-right">
@@ -41,14 +41,14 @@ class Comment extends React.Component {
       <div className="list-comments">
         <div className="row comment-user-date">
           <div className="col-sx-1 col-sm-1 col-md-1 col-lg-1">
-            <img src="/images/no-avatar.png" className="avatar" width="96x96" alt="Users avatar" />
+            <img src={comment.user.avatar_image_id} className="avatar" width="96x96" alt="Users avatar" />
           </div>
           <div className="col-sx-8 col-sm-8 col-md-8 col-lg-8">
             <div className="comment-full-name">
-              { this.userLink(comment.user, comment.userfullname) }
+              { this.userLink(comment.user.id, comment.user.full_name) }
             </div>
             <div className="comment-date">
-              < Time date={comment.created} />
+              < Time date={comment.created_at} />
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ class Comment extends React.Component {
             <div className="comment-content">
               { comment.content.toString() }
             </div>
-            { this.deleteLink(comment.user) }
+            { this.deleteLink(comment.user.id) }
           </div>
         </div>
       </div>
