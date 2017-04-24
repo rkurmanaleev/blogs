@@ -19,8 +19,8 @@ describe CommentsController do
 
     it "lists comment" do
       expect(json_response["data"][0]["id"]).to eq comment.id.to_json
-      expect(json_response["data"][0]["attributes"]["post"]).to eq comment.post_id.to_i
-      expect(json_response["data"][0]["attributes"]["user"]).to eq comment.user_id.to_i
+      expect(json_response["data"][0]["attributes"]["post_id"]).to eq comment.post_id.to_i
+      expect(json_response["data"][0]["attributes"]["user"]["id"]).to eq comment.user_id.to_i
       expect(json_response["data"][0]["attributes"]["content"]).to eq comment.content
     end
   end
@@ -99,8 +99,8 @@ describe CommentsController do
         destroy_request
 
         expect(json_response["data"]["id"]).to eq comment.id.to_json
-        expect(json_response["data"]["attributes"]["post"]).to eq comment.post_id.to_i
-        expect(json_response["data"]["attributes"]["user"]).to eq comment.user_id.to_i
+        expect(json_response["data"]["attributes"]["post_id"]).to eq comment.post_id.to_i
+        expect(json_response["data"]["attributes"]["user"]["id"]).to eq comment.user_id.to_i
         expect(json_response["data"]["attributes"]["content"]).to eq comment.content
       end
     end
