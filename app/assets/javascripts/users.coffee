@@ -7,8 +7,6 @@ $ ->
     upload_field = $("#user_avatar_image")
     delete_link_anchor = $("#user-avatar-delete")
 
-
-
     upload_field.on 'change', () ->
       remove_link_div.removeClass("hidden")
 
