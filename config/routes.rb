@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i(new create show destroy)
   end
+
+  namespace :posts do
+    resources :by_tag, controller: "by_tag", only: :show
+  end
+
   resources :users, only: :show do
     resources :all_posts, controller: "users/all_posts", only: :index
     resources :recent_posts, controller: "users/recent_posts", only: :index
