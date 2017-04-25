@@ -1,7 +1,7 @@
 class PostDecorator < ApplicationDecorator
   TRUNCATED_TEXT_LENGTH = 500
 
-  delegate :title, :user_id, :content, :errors
+  delegate :title, :user_id, :content, :errors, :tag_list
   delegate :full_name, to: :user, prefix: true
   decorates_association :comments
 
