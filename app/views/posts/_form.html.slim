@@ -3,6 +3,7 @@
     .form-group
       = f.input :title, error: "Title can't be blank", class: "form-control"
       = f.input :content, error: "Content can't be blank", as: "text", class: "form-control"
+      = f.input :tag_list, class: "form-control"
     .row
       .col-sm-6.col-md-6
         = f.button :submit, class: "btn btn-success form-control"
