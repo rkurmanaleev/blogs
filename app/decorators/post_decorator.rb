@@ -28,4 +28,8 @@ class PostDecorator < ApplicationDecorator
   def post_user_path
     h.user_path(object.user_id)
   end
+
+  def tags?
+    !object.tag_list.blank?
+  end
 end
