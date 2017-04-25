@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   private
 
   def posts_fetcher
-    current_user.posts.ordered_by_desc.latest
+    current_user.posts.ordered_by_desc.latest.includes(:taggings)
   end
 
   def comment_fetcher
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :tag_list)
   end
 
   def authorize_user!
