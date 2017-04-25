@@ -4,14 +4,6 @@ feature "As user I want to view my previous post with comments" do
   include_context "current user signed in"
   include_context "post with comment"
 
-  RSpec::Matchers.define :have_posts_content_and_title_on_post_page do
-    match do
-      eq post_path(post)
-      have_content post.title
-      have_content post.content
-    end
-  end
-
   def visit_posts_path_and_click_on_title
     visit posts_path
     click_on post.title
