@@ -5,7 +5,7 @@ module Posts
     private
 
     def posts_fetcher
-      @posts = Post.tagged_with(params[:id])
+      @posts ||= Post.tagged_with(params[:id]).includes(:user, :taggings)
     end
   end
 end
