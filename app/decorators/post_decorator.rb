@@ -9,10 +9,6 @@ class PostDecorator < ApplicationDecorator
     object.comments.exists?
   end
 
-  def comments_stat
-    @comments_stat ||= "Comments: #{object.comments_count}"
-  end
-
   def user_full_name
     @user_full_name ||= object.user.full_name
   end

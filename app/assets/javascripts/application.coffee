@@ -7,6 +7,5 @@
 #= require jquery
 #= require jquery-ujs
 #= require twitter/bootstrap
+#= require bootstrap
 #= require current_user
-#= require posts
-#= require_tree .

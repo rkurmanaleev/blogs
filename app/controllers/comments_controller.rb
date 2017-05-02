@@ -8,6 +8,10 @@ class CommentsController < ApplicationController
 
   respond_to :json
 
+  def index
+    render json: comments, status: 200
+  end
+
   def create
     if comment.save
       render json: comment, include: { user: { only: :full_name } }, status: 200
@@ -18,7 +22,7 @@ class CommentsController < ApplicationController
 
   def destroy
     if comment.destroy
-      render json: comment, status: :ok
+      render json: comment, status: 200
     else
       render json: comment.errors, status: 422
     end

@@ -12,6 +12,10 @@
     "RAILS_SERVE_STATIC_FILES": { "required": true },
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" }
+  ],
   "addons": [
     "heroku-postgresql",
     "sendgrid",

@@ -3,15 +3,17 @@
     = post.created_date
     i by 
     = link_to post.user_full_name, post.post_user_path
-  h3= link_to post.title, post
-  p= post.short_content
-  .read-more
-    = link_to "Read more", post
-  .post-links
-    pre.marginned-bottom
-      = link_to post.comments_stat, post
-      |  
-      - if policy(post).manage?
+  h3 = link_to post.title, post
+  - if action_name == "show"
+    p = post.content
+    br
+  - else
+    p = post.short_content
+    .read-more
+      = link_to "Read more", post
+  - if policy(post).manage?
+    .post-links
+      pre.marginned-bottom
         = link_to "Edit the Post", edit_post_path(post)
         |   
         = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }
