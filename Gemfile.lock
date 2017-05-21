@@ -15,6 +15,12 @@ GIT
       railties (>= 4.2)
 
 GIT
+  remote: https://github.com/rkurmanaleev/fragment.js.git
+  revision: 36ebd87c3c3f996b0af9c1a84f4b85edb437a02b
+  specs:
+    fragments.js (0.0.2)
+
+GIT
   remote: https://github.com/rkurmanaleev/refile.git
   revision: 4b69c385aaf82f0e45734bb20f79b1626cbde4bf
   specs:
@@ -509,6 +515,7 @@ DEPENDENCIES
   faker
   flamegraph
   formulaic
+  fragments.js!
   guard-rspec
   health_check
   inky-rb
