@@ -8,6 +8,9 @@
 #= require jquery-ujs
 #= require twitter/bootstrap
 #= require bootstrap
+#= require fragments
+#= require fragments/highlight
 #= require refile
 #= require current_user
 #= require users
+#= require posts
