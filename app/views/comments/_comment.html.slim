@@ -1,12 +1,13 @@
 .comment[data-element="#{comment.id}" data-updated-at="#{comment.updated_at.to_i}"]
-  = attachment_image_tag(comment.user_avatar_image, :avatar_image, \
-    format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", \
-    width: 50, height: 50, class: "avatar")
+  = comment.user_avatar_image
+
   .comment-user-date
     = comment.link_to_user
-    = " wrote on #{comment.formatted_time}"
+    = " left on #{comment.formatted_time}"
+
   .comment-content
     = comment.content
+
   - if policy(comment).delete?
     .comment-links
       = link_to "Delete comment?", [post, comment], method: :delete,
