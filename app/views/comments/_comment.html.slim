@@ -1,5 +1,7 @@
 .comment[data-element="#{comment.id}" data-updated-at="#{comment.updated_at.to_i}"]
-  = comment.user_avatar_image_tag
+  = attachment_image_tag(comment.user_avatar_image, :avatar_image, \
+    format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", \
+    width: 50, height: 50, class: "avatar")
   .comment-user-date
     = comment.link_to_user
     = " wrote on #{comment.formatted_time}"
