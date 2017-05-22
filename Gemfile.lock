@@ -6,10 +6,10 @@ GIT
       rack (>= 1.2.0)
 
 GIT
-  remote: https://github.com/rkurmanaleev/fragment.js.git
-  revision: 2597b6b2b0f1bad8e6bc9694766d6a68ca944150
+  remote: https://github.com/fs/fragments.js.git
+  revision: 4d786b7a53ccc487dec3008e789aaaf14b8b0c5d
   specs:
-    fragments.js (0.0.3)
+    fragments.js (0.0.1)
 
 GIT
   remote: https://github.com/rkurmanaleev/refile.git
@@ -497,7 +497,7 @@ DEPENDENCIES
   faker
   flamegraph
   formulaic
-  fragments.js (~> 0.0.3)!
+  fragments.js!
   guard-rspec
   health_check
   inky-rb
