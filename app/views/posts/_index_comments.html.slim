@@ -1,0 +1,12 @@
+.comments[data-fragment-id="comments" data-highlight=""]
+  - if post.comments?
+    .comments-stat
+      h4
+        | Total comments 
+        .badge
+          b = "#{comments.size}"
+
+    = render comments
+  - else
+    h4.text-center
+      b No comments yet...
