@@ -4,45 +4,17 @@ describe CommentsController do
   let(:user) { create(:user) }
   let(:pst) { create(:post, user: user) }
 
-  describe "#index" do
-    let!(:comment) { create(:comment, user: user, post: pst) }
-    let(:json_response) { JSON.parse(response.body) }
-
-    before do
-      sign_in(user)
-      get :index, format: :json, params: { post_id: pst.id }
-    end
-
-    it "returns 200 status" do
-      expect(response.status).to eq 200
-    end
-
-    it "lists comment" do
-      expect(json_response["data"][0]["id"]).to eq comment.id.to_json
-      expect(json_response["data"][0]["attributes"]["post_id"]).to eq comment.post_id.to_i
-      expect(json_response["data"][0]["attributes"]["user"]["id"]).to eq comment.user_id.to_i
-      expect(json_response["data"][0]["attributes"]["content"]).to eq comment.content
-    end
-  end
-
   describe "#create" do
     before { sign_in(user) }
-    let(:json_response) { JSON.parse(response.body) }
 
-    def post_request(valid = "A comment to test API comment#create method")
-      post :create, format: :json, params:
-      {
-        post_id: pst.id,
-        comment:
-          {
-            post_id: pst.id,
-            user_id: user.id,
-            content: valid
-          }
+    def post_request(content = "A comment for test purposes")
+      post :create, params: {
+        post_id: pst,
+        comment: attributes_for(:comment, content: content, user_id: user, post_id: pst)
       }
     end
 
-    context "with valid params" do
+    describe "with valid params" do
       it "returns 200 status" do
         post_request
         expect(response).to be_success
@@ -54,11 +26,11 @@ describe CommentsController do
 
       it "returns correct content value" do
         post_request
-        expect(json_response["data"]["attributes"]["content"]).to eq "A comment to test API comment#create method"
+        expect(response.body).not_to eq ["Content can't be blank"]
       end
     end
 
-    context "with invalid params" do
+    describe "with invalid params" do
       it "returns 422 status" do
         post_request(nil)
         expect(response).not_to be_success
@@ -70,24 +42,24 @@ describe CommentsController do
 
       it "returns an error message" do
         post_request(nil)
-        expect(json_response["content"]).to eq ["can't be blank"]
+        expect(JSON.parse(response.body)).to eq ["Content can't be blank"]
       end
     end
   end
 
   describe "#destroy" do
     let!(:comment) { create(:comment, user: user, post: pst) }
-    let(:json_response) { JSON.parse(response.body) }
-
-    before { sign_in(user) }
 
     def destroy_request
-      delete :destroy, params: { id: comment, post_id: pst }
+      delete :destroy, params: { post_id: pst, id: comment }
     end
 
-    context "successfully" do
+    describe "successfully by Owner" do
+      before { sign_in(user) }
+
       scenario "returns 200 status" do
         destroy_request
+
         expect(response.status).to eq 200
       end
 
@@ -98,10 +70,29 @@ describe CommentsController do
       scenario "returns object" do
         destroy_request
 
-        expect(json_response["data"]["id"]).to eq comment.id.to_json
-        expect(json_response["data"]["attributes"]["post_id"]).to eq comment.post_id.to_i
-        expect(json_response["data"]["attributes"]["user"]["id"]).to eq comment.user_id.to_i
-        expect(json_response["data"]["attributes"]["content"]).to eq comment.content
+        expect(response.body).not_to have_content "A comment for test purposes"
+      end
+    end
+
+    describe "unsuccessfully by another User" do
+      let(:another_user) { create(:user) }
+
+      before { sign_in(another_user) }
+
+      scenario "returns 401 status" do
+        destroy_request
+
+        expect(response.status).to eq 401
+      end
+
+      scenario "returns error" do
+        destroy_request
+
+        expect(response.body).to have_content "You are not authorized to perform this action."
+      end
+
+      scenario "not removes object from DB" do
+        expect { destroy_request }.to change(Comment, :count).by(0)
       end
     end
   end
