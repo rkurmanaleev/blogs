@@ -21,7 +21,7 @@ end
 
 # views
 gem "active_link_to"
-gem "fragments.js", git: "https://github.com/rkurmanaleev/fragment.js.git"
+gem "fragments.js", "~> 0.0.3", git: "https://github.com/rkurmanaleev/fragment.js.git"
 gem "inky-rb", require: "inky"
 gem "metamagic"
 gem "simple_form"
