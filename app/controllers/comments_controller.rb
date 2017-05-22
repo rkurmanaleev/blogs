@@ -9,19 +9,13 @@ class CommentsController < ApplicationController
   expose_decorated(:comments) { comments_fetch }
 
   def create
-    if comment.save
-      render "posts/_index_comments", comments: comments, layout: false
-    else
-      render json: comment.errors.full_messages, status: 422
-    end
+    comment.save
+    render "posts/_index_comments", comments: comments, layout: false
   end
 
   def destroy
-    if comment.destroy
-      render "posts/_index_comments", comments: comments, layout: false
-    else
-      render json: comment.errors.full_messages, status: 422
-    end
+    comment.destroy
+    render "posts/_index_comments", comments: comments, layout: false
   end
 
   private
