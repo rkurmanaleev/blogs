@@ -23,26 +23,11 @@ describe CommentsController do
       it "creates a record" do
         expect { post_request }.to change(Comment, :count).by(1)
       end
-
-      it "returns correct content value" do
-        post_request
-        expect(response.body).not_to eq ["Content can't be blank"]
-      end
     end
 
     describe "with invalid params" do
-      it "returns 422 status" do
-        post_request(nil)
-        expect(response).not_to be_success
-      end
-
       it "not creates a record" do
         expect { post_request(nil) }.not_to change(Comment, :count)
-      end
-
-      it "returns an error message" do
-        post_request(nil)
-        expect(JSON.parse(response.body)).to eq ["Content can't be blank"]
       end
     end
   end

@@ -83,3 +83,27 @@ $comment-content-color: rgba(39, 55, 64, .09);
   padding-left: 1rem;
 
 }
+
+.is-updated-fragment {
+  animation-name: popout;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+@keyframes popout {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.90);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: scale(1.2);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}

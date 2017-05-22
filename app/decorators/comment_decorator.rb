@@ -1,13 +1,19 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :content, :user_id, :post_id, :updated_at
+  delegate :content, :user_id, :post_id, :updated_at, :errors
   delegate :full_name, :avatar_image, to: :user, prefix: true
 
   def user_full_name
     @user_full_name ||= object.user.full_name
   end
 
-  def user_avatar_image
-    @user_avatar_image ||= object.user.avatar_image
+  def user_avatar_image_tag
+    h.attachment_image_tag(
+      object.user.avatar_image, :avatar_image,
+      format: "jpg",
+      fallback: "no-avatar.png",
+      class: "avatar",
+      alt: "User's avatar"
+    )
   end
 
   def link_to_user
