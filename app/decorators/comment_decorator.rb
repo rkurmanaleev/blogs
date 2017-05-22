@@ -7,7 +7,13 @@ class CommentDecorator < ApplicationDecorator
   end
 
   def user_avatar_image
-    @user_avatar_image ||= object.user.avatar_image
+    h.attachment_image_tag(
+      object.user.avatar_image, :avatar_image,
+      format: "jpg",
+      fallback: "no-avatar.png",
+      id: "user-avatar-img",
+      class: "avatar"
+    )
   end
 
   def link_to_user
