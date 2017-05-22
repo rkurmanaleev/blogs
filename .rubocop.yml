@@ -10,7 +10,6 @@ AllCops:
     - bin/**/*
     - db/**/*
     - vendor/**/*
-    - node_modules/**/*
 
 Rails/HasAndBelongsToMany:
   Enabled: false

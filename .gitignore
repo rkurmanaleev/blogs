@@ -12,5 +12,3 @@ vendor/ruby
 ._*
 .env
 .pryrc
-/public/packs
-/node_modules

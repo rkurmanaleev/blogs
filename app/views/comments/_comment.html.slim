@@ -1,1 +1,14 @@
+.comment[data-element="#{comment.id}" data-updated-at="#{comment.updated_at.to_i}"]
+  = comment.user_avatar_image
 
+  .comment-user-date
+    = comment.link_to_user
+    = " left on #{comment.formatted_time}"
+
+  .comment-content
+    = comment.content
+
+  - if policy(comment).delete?
+    .comment-links
+      = link_to "Delete comment?", [post, comment], method: :delete,
+        data: { remote: true, behavior: "fragments", confirm: "Are you sure?" }

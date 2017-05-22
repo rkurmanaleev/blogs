@@ -1,4 +1,14 @@
-.col-sx-4.col-sm-4.col-md-4.col-lg-4
+
+.col-sx-3.col-sm-3.col-md-3.col-lg-3
+  .user-avatar
+    h2.text-center Avatar
+    .user-avatar-picture
+      = attachment_image_tag(@user, :avatar_image, \
+        format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", width: 234, height: 234)
+    .user-avatar-link.hidden
+      = link_to "Switch to old avatar?", "#", id: "user-avatar-delete"
+
+.col-sx-4.col-sm-4.col-md-4.col-lg-4.col-md-offset-1
   h2.text-center = title("Edit profile")
   = simple_form_for resource,
       as: resource_name,
@@ -10,6 +20,9 @@
       = f.input :email, required: true, class: "form-control", placeholder: "Your email", label: false
       = f.input :password, required: false, class: "form-control", placeholder: "Set new password", label: false, autocomplete: :off
       = f.input :password_confirmation, required: false, class: "form-control", placeholder: "Confirm password", label: false
+      = f.input :avatar_image, as: :attachment, direct: true, presigned: true, class: "form-control"
+      = f.label :remove_avatar_image, "Remove avatar "
+      = f.check_box :remove_avatar_image, id: "remove_avatar_image"
       = f.button :submit, "Update", class: "btn btn-success form-control"
   br
   p.text-center
@@ -17,9 +30,3 @@
   = link_to "Yes please, cancel my account", registration_path(resource_name),
       data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger form-control"
 
-.col-sx-3.col-sm-3.col-md-3.col-lg-3.col-md-offset-1
-  h2.text-center Upload the Avatar
-  p = image_tag("no-avatar")
-  p
-    input{placeholder="Browse file..." class="form-control"}
-  = link_to "Send File", "#", class: "btn btn-success form-control"

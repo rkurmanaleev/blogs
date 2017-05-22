@@ -1,31 +1,21 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!, only: :destroy
 
-  expose(:comment)
-  expose(:post)
-  expose(:comments) { comments_fetch }
-  expose(:user)
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  respond_to :json
-
-  def index
-    render json: comments, status: 200
-  end
+  expose_decorated(:comment)
+  expose_decorated(:post)
+  expose_decorated(:comments) { comments_fetch }
 
   def create
-    if comment.save
-      render json: comment, include: { user: { only: :full_name } }, status: 200
-    else
-      render json: comment.errors, status: 422
-    end
+    comment.save
+    render "posts/_index_comments", comments: comments, layout: false
   end
 
   def destroy
-    if comment.destroy
-      render json: comment, status: 200
-    else
-      render json: comment.errors, status: 422
-    end
+    comment.destroy
+    render "posts/_index_comments", comments: comments, layout: false
   end
 
   private
@@ -36,5 +26,13 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:id, :content, :post_id, :user_id)
+  end
+
+  def authorize_user!
+    authorize(comment, :delete?)
+  end
+
+  def user_not_authorized
+    render json: "You are not authorized to perform this action.", status: 401
   end
 end

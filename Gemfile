@@ -13,7 +13,6 @@ gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 2.7.2"
-gem "webpacker", git: "https://github.com/rails/webpacker.git"
 
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
@@ -22,13 +21,13 @@ end
 
 # views
 gem "active_link_to"
+gem "fragments.js", git: "https://github.com/fs/fragments.js.git"
 gem "inky-rb", require: "inky"
 gem "metamagic"
 gem "simple_form"
 gem "slim"
 
 # all other gems
-gem "active_model_serializers", "~> 0.10.5"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -42,6 +41,8 @@ gem "puma"
 gem "pundit"
 gem "rack-canonical-host"
 gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/rack-mini-profiler.git"
+gem "refile", require: "refile/rails", git: "https://github.com/rkurmanaleev/refile.git"
+gem "refile-mini_magick"
 gem "responders"
 gem "rollbar"
 gem "seedbank"
