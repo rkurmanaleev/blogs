@@ -13,7 +13,6 @@ gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 2.7.2"
-gem "webpacker", git: "https://github.com/rails/webpacker.git"
 
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
@@ -29,7 +28,6 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
-gem "active_model_serializers", "~> 0.10.5"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
