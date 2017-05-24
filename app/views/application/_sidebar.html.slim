@@ -1,39 +1,9 @@
-section
-  .jumbotron
-    p
-      h4 Subscribe via Email
-    form#subscribe-blog.form-group
-      #subscribe-text
-        small
-          p Enter your email address to subscribe to this blog and receive notifications of new posts by email.
-      #subscribe-email
-        p
-          input#subscribe-field-blog_subscription-4.required.form-control name="email" placeholder=("Email Address") required="required" type="email" value="" /
-        p
-          = link_to "Submit", "#", class: "btn btn-success form-control"
-
 section.sidebar-module
   p
     h4 Recent Posts
   ol.list-unstyled
     - Post.last(5).each do |p|
       li = link_to p.title, p
-
-.sidebar-module
-  p
-    h4 Categories
-  ol.list-unstyled
-    li = link_to "March", "adsad"
-    li = link_to "March2", "adsad2"
-    li = link_to "March3", "adsad3"
-    li = link_to "March4", "adsad4"
-
-.sidebar-module
-  form role="search"
-    .input-group
-      input.form-control placeholder="Search..." type="text" /
-      span.input-group-btn
-        button.btn.btn-default type="button" Go!
 
 section.sidebar-module
   h4 Recent Comments
@@ -44,8 +14,3 @@ section.sidebar-module
           = link_to "#{User.find(c.user_id).full_name}", user_path(c.user_id)
           | on 
           = link_to "#{Post.find(c.post_id).title}", post_path(c.post_id)
-section.sidebar-module
-  h4 Archive
-  ol.list-unstyled
-    li = link_to "2017", "adsad"
-    li = link_to "2016", "adsad2"
