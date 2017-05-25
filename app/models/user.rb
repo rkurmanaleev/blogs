@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   attachment :avatar_image, content_type: ["image/jpeg", "image/png", "image/gif", "image/jpg"]
+
+  scope :with_posts, -> { where("posts_count > 0") }
 end
