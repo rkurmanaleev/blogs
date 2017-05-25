@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   responders :flash
   respond_to :html
 
-  expose(:posts_sidebar) { Post.all.ordered_by_desc.last(5) }
-  expose(:comments_sidebar) { Comment.all.ordered_by_desc.last(5) }
+  expose(:posts_sidebar) { Post.sorted_recent }
+  expose(:comments_sidebar) { Comment.sorted_recent }
 end
