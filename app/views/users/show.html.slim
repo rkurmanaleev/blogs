@@ -1,7 +1,17 @@
-b= "Statistics of #{user.full_name}:"
-ul
-  li= user.posts_stat
-  li= user.comments_stat
-= link_to "See All Posts", user_all_posts_path(user)
-br
-= link_to "See Recent Posts", user_recent_posts_path(user)
+.col-sx-9.col-sm-9.col-md-9.col-lg-9
+  h3.text-center = user.full_name
+  .row
+    .col-sx-2.col-sm-2.col-md-2.col-lg-2
+      .user-avatar
+        = user.avatar_image_tag
+
+    .col-sx-7.col-sm-7.col-md-7.col-lg-7
+      .user-stats
+        b Statistics:
+        ul
+          li = user.posts_stat
+          li = user.comments_stat
+      .user-links
+        = link_to "See All User's Posts", user_posts_all_posts_path(user)
+        br
+        = link_to "See Recent User's Posts", user_posts_recent_posts_path(user)
