@@ -6,6 +6,5 @@
         | Create a 
         = link_to "new post", new_post_path
   - else
-    - posts.each do |post|
-      = render "posts/post", post: post
+    = render collection: posts, partial: "posts/post"
 

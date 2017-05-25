@@ -5,5 +5,4 @@
   - else
     h3.text-center
       = "#{controller_name.humanize} of #{user.full_name}"
-    - posts.each do |post|
-      = render "posts/post", post: post
+    = render collection: posts, partial: "posts/post"
