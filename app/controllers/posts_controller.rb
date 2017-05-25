@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   private
 
   def posts_fetcher
-    Post.ordered_by_desc.latest
+    Post.sorted_last
   end
 
   def comment_fetcher
