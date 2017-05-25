@@ -21,6 +21,6 @@ feature "User creates a Post" do
     fill_new_post_attributes(nil)
 
     expect(current_path).to eq posts_path
-    expect(page).to have_content "Title can't be blank"
+    expect(page).to have_content "Titlecan't be blank"
   end
 end

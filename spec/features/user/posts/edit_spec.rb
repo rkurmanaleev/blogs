@@ -22,7 +22,7 @@ feature "I want to edit previous post title and/or content" do
       edit_form(nil)
 
       expect(current_path).to eq post_path(post)
-      expect(page).to have_content "Title can't be blank"
+      expect(page).to have_content "Titlecan't be blank"
     end
   end
 
