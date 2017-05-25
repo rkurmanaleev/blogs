@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_user!, only: %i(edit update)
+  before_action :authorize_user!, only: %i(edit update destroy)
 
   expose_decorated(:post)
   expose_decorated(:posts) { posts_fetcher }
   expose_decorated(:comment) { comment_fetcher }
   expose_decorated(:comments) { comments_fetcher }
+
+  def index
+  end
+
+  def show
+  end
 
   def create
     post.user = current_user
@@ -26,13 +32,13 @@ class PostsController < ApplicationController
 
   def destroy
     post.destroy
-    redirect_to posts_path, notice: "Post has been successfully deleted."
+    respond_with post
   end
 
   private
 
   def posts_fetcher
-    current_user.posts.ordered_by_desc.latest
+    Post.sorted_last
   end
 
   def comment_fetcher

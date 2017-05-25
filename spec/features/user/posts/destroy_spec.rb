@@ -9,7 +9,7 @@ feature "As the User I want to be able to delete posts" do
     click_on "Delete the Post"
 
     expect(current_path).to eq posts_path
-    expect(page).to have_content "Post has been successfully deleted."
+    expect(page).to have_content "Post was successfully destroyed."
   end
 
   context "that belong to Another Users" do

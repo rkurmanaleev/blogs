@@ -18,10 +18,10 @@ class PostDecorator < ApplicationDecorator
   end
 
   def created_date
-    l object.created_at, format: :long_date
+    l(object.created_at, format: :long_date)
   end
 
   def post_user_path
-    h.user_path(object.user_id)
+    h.user_path(object.user)
   end
 end
