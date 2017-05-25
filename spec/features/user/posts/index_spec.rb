@@ -18,7 +18,7 @@ feature "List recent posts" do
     scenario "sees a call2action" do
       visit posts_path
 
-      expect(page).to have_content("Sorry, you have no posts yet...")
+      expect(page).to have_content("Sorry, there are no posts yet...")
       expect(page).to have_link("new post", href: new_post_path)
     end
   end

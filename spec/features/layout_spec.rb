@@ -15,7 +15,7 @@ feature "Layout Specs" do
   end
 
   describe "non-default behaviour" do
-    let(:post) { create(:post, user: current_user) }
+    let!(:post) { create(:post, user: current_user) }
     let!(:comment) { create(:comment, user: current_user, post: post) }
 
     scenario "with Recent Posts&Comments" do
@@ -24,6 +24,7 @@ feature "Layout Specs" do
       expect(page).to have_content "Recent Posts"
       expect(page).to have_content post.title
       expect(page).to have_content "Recent Comments"
+      expect(page).to have_content comment.post.title
     end
   end
 end
