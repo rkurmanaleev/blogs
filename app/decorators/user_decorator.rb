@@ -14,7 +14,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def posts?
-    return true if user.posts
+    return true if user.posts.any?
   end
 
   def avatar_image_tag

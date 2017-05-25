@@ -1,7 +1,6 @@
 module Posts
   class MyPostsController < PostsController
-    expose_decorated(:user) { current_user }
-    expose_decorated(:posts) { user.posts }
+    expose_decorated(:posts) { current_user.posts.ordered_by_desc }
 
     def index
     end
