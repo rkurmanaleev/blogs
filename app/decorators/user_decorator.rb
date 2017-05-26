@@ -1,5 +1,5 @@
 class UserDecorator < ApplicationDecorator
-  delegate :id, :full_name, :email
+  delegate :id, :full_name, :email, :avatar_image
 
   def full_name_with_email
     @full_name_with_email ||= "#{object.full_name} (#{object.email})"
@@ -19,9 +19,8 @@ class UserDecorator < ApplicationDecorator
 
   def avatar_image_tag
     h.attachment_image_tag(
-      object.avatar_image, :avatar_image,
-      height: 150,
-      width: 150,
+      object, :avatar_image,
+      class: "user-avatar",
       format: "jpg",
       fallback: "no-avatar.png",
       id: "user-avatar-img"
