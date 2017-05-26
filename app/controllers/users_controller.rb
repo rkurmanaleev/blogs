@@ -12,6 +12,6 @@ class UsersController < ApplicationController
   private
 
   def users_fetcher
-    User.find_by_sql('SELECT * FROM users WHERE (posts_count > 0) ORDER BY posts_count DESC')
+    User.find_by_sql("SELECT * FROM users WHERE (posts_count > 0) ORDER BY posts_count DESC")
   end
 end
