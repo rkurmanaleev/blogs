@@ -7,9 +7,6 @@ class PostsController < ApplicationController
   expose_decorated(:comment) { comment_fetcher }
   expose_decorated(:comments) { comments_fetcher }
 
-  def index
-  end
-
   def show
   end
 
