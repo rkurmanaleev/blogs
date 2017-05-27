@@ -1,6 +1,6 @@
 class CommentDecorator < ApplicationDecorator
   delegate :content, :user_id, :post_id, :updated_at
-  delegate :full_name, :avatar_image, to: :user, prefix: true
+  delegate :full_name, :avatar_image, :avatar_image_id, to: :user, prefix: true
   delegate :title, to: :post, prefix: true
 
   def user_full_name
