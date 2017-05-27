@@ -75,7 +75,7 @@ describe PostsController do
       it "redirects" do
         post_request
 
-        expect(response).to redirect_to posts_path
+        expect(response).to redirect_to post_path(Post.last)
       end
     end
 
@@ -113,10 +113,10 @@ describe PostsController do
         expect { destroy_request }.to change(Post, :count).by(-1)
       end
 
-      it "redirects to posts_path" do
+      it "redirects to my_posts_path" do
         destroy_request
 
-        expect(response).to redirect_to posts_path
+        expect(response).to redirect_to my_posts_path
       end
     end
 

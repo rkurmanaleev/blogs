@@ -8,7 +8,7 @@ feature "As the User I want to be able to delete posts" do
     visit post_path(post)
     click_on "Delete the Post"
 
-    expect(current_path).to eq posts_path
+    expect(current_path).to eq my_posts_path
     expect(page).to have_content "Post was successfully destroyed."
   end
 
