@@ -13,26 +13,25 @@ class PostsController < ApplicationController
   def show
   end
 
+  def new
+  end
+
   def create
-    post.user = current_user
-    if post.save
-      redirect_to posts_path, notice: "Post has been successfully created."
-    else
-      render :new
-    end
+    post.update(user_id: current_user.id)
+    respond_with post
+  end
+
+  def edit
   end
 
   def update
-    if post.update(post_params)
-      redirect_to posts_path, notice: "Post has been successfully updated."
-    else
-      render :edit
-    end
+    post.update(post_params)
+    respond_with post
   end
 
   def destroy
     post.destroy
-    respond_with post
+    respond_with(post, location: my_posts_url)
   end
 
   private
