@@ -10,7 +10,7 @@
       = f.input :user_id, value: current_user.id, as: :hidden
       = f.input :post_id, value: post.id, as: :hidden
       = f.input :content, as: :text, label: false,
-        input_html: { placeholder: "Leave a comment here", rows: 3, cols: 15 }
+        input_html: { placeholder: "Leave a comment here", rows: 3 }
       = f.error :content
       = f.submit "Save the Comment", id: "comment_save",
         class: "btn btn-primary", disabled: "disabled"
