@@ -13,8 +13,8 @@ feature "As the user I would like to change my Avatar" do
     change_avatar("images", "no-avatar.png")
 
     expect(page).to have_content "Your account has been updated successfully."
+    expect(current_path).to eq edit_user_registration_path
 
-    visit edit_user_registration_path(current_user)
     within ".user-avatar" do
       expect(find("img")["src"]).to have_content "avatar_image.jpg"
       expect(find("img")["alt"]).not_to have_content "User avatar"

@@ -11,9 +11,9 @@ class CommentDecorator < ApplicationDecorator
     @post_title ||= object.post.title
   end
 
-  def user_avatar_image
+  def user_avatar_image_tag
     h.attachment_image_tag(
-      object.user.avatar_image, :avatar_image,
+      object.user, :avatar_image,
       format: "jpg",
       fallback: "no-avatar.png",
       id: "user-avatar-img",

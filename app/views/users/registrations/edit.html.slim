@@ -1,10 +1,9 @@
-
 .col-sx-3.col-sm-3.col-md-3.col-lg-3
   .user-avatar
     h2.text-center Avatar
     .user-avatar-picture
-      = attachment_image_tag(@user, :avatar_image, \
-        format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", width: 234, height: 234)
+      = attachment_image_tag(resource, :avatar_image,
+        format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", class: "user-avatar-upload")
     .user-avatar-link.hidden
       = link_to "Switch to old avatar?", "#", id: "user-avatar-delete"
 

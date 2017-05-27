@@ -3,7 +3,7 @@ module Users
     protected
 
     def update_resource(resource, params)
-      resource.update_attributes(params)
+      resource.update(params)
     end
 
     def account_update_params
@@ -18,6 +18,10 @@ module Users
 
     def passwords_blank?(params)
       params[:password].blank? && params[:password_confirmation].blank?
+    end
+
+    def user_root_path
+      edit_user_registration_path
     end
   end
 end
