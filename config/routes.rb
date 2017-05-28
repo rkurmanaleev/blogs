@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   # users/:id/posts/all_posts
   # users/:id/posts/recent_posts
   resources :users, only: %i(index show) do
-    namespace :posts, module: nil do
-      resources :all_posts, controller: "users/posts/all_posts", only: :index
-      resources :recent_posts, controller: "users/posts/recent_posts", only: :index
-    end
+    resources :all_posts, controller: "users/posts/all_posts", path: "/posts/all_posts", only: :index
+    resources :recent_posts, controller: "users/posts/recent_posts", path: "/posts/recent_posts", only: :index
   end
 end
