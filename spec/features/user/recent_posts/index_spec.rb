@@ -5,7 +5,7 @@ feature "As User when I visit user/:id/posts/recent_posts" do
   let!(:posts) { create_list(:post, 15, user: current_user) }
 
   scenario "I see only recent user's posts" do
-    visit user_posts_recent_posts_path(current_user)
+    visit user_recent_posts_path(current_user)
 
     within ".col-sx-9" do
       expect(page).to have_content posts.last.title

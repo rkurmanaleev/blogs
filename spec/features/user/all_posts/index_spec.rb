@@ -5,7 +5,7 @@ feature "As User when I visit user/:id/posts/all_posts" do
   let!(:posts) { create_list(:post, 15, user: current_user) }
 
   scenario "I see ALL of the user's posts" do
-    visit user_posts_all_posts_path(current_user)
+    visit user_all_posts_path(current_user)
 
     within ".col-sx-9" do
       expect(page).to have_content posts.first.title

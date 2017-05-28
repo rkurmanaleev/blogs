@@ -11,7 +11,7 @@ feature "As authenticated User, I can see any user's post" do
   scenario "Recent 10 posts" do
     click_on "See Recent User's Posts"
 
-    expect(current_path).to eq user_posts_recent_posts_path(current_user)
+    expect(current_path).to eq user_recent_posts_path(current_user)
     within ".col-sx-9" do
       expect(page).to have_content last_post.title
       expect(page).not_to have_content first_post.title
@@ -21,7 +21,7 @@ feature "As authenticated User, I can see any user's post" do
   scenario "All posts" do
     click_on "See All User's Posts"
 
-    expect(current_path).to eq user_posts_all_posts_path(current_user)
+    expect(current_path).to eq user_all_posts_path(current_user)
     expect(page).to have_content first_post.title
     expect(page).to have_content last_post.title
   end
