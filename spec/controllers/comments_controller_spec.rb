@@ -83,16 +83,16 @@ describe CommentsController do
 
       before { sign_in(another_user) }
 
-      scenario "returns 401 status" do
+      scenario "returns 302 status" do
         destroy_request
 
-        expect(response.status).to eq 401
+        expect(response.status).to eq 302
       end
 
-      scenario "returns error" do
+      scenario "redirects to root_path" do
         destroy_request
 
-        expect(response.body).to have_content "You are not authorized to perform this action."
+        expect(response).to redirect_to root_path
       end
 
       scenario "not removes object from DB" do
