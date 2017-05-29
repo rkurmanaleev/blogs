@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i(new create destroy)
   end
 
-  # posts/my_posts
+  # /my_posts
   resources :my_posts, module: "posts", controller: "my_posts", only: :index
 
   # users/:id/posts/all_posts
