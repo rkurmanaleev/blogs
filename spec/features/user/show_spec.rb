@@ -8,20 +8,11 @@ feature "As authenticated User, I can see any user's post" do
 
   before { visit user_path(current_user) }
 
-  scenario "Recent 10 posts" do
-    click_on "See Recent User's Posts"
+  scenario "All posts", js: true do
+    click_on "See User's Posts"
 
-    expect(current_path).to eq user_recent_posts_path(current_user)
-    within ".col-sx-9" do
-      expect(page).to have_content last_post.title
-      expect(page).not_to have_content first_post.title
-    end
-  end
-
-  scenario "All posts" do
-    click_on "See All User's Posts"
-
-    expect(current_path).to eq user_all_posts_path(current_user)
+    page.execute_script("window.scrollTo(0,100000)")
+    expect(current_path).to eq user_posts_path(current_user)
     expect(page).to have_content first_post.title
     expect(page).to have_content last_post.title
   end
