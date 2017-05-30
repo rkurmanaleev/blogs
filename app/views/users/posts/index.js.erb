@@ -1,0 +1,6 @@
+$("#posts").append("<%= j render collection: posts, partial: 'posts/post' %>");
+<% if posts.next_page %>
+  $(".pagination").replaceWith("<%= j paginate(posts) %>");
+<% else %>
+  $(".pagination").remove();
+<% end %>
