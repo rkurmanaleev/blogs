@@ -10,10 +10,8 @@ Rails.application.routes.draw do
   # /my_posts
   resources :my_posts, module: "posts", controller: "my_posts", only: :index
 
-  # users/:id/posts/all_posts
-  # users/:id/posts/recent_posts
+  # users/:id/posts
   resources :users, only: %i(index show) do
-    resources :all_posts, controller: "users/posts/all_posts", path: "/posts/all_posts", only: :index
-    resources :recent_posts, controller: "users/posts/recent_posts", path: "/posts/recent_posts", only: :index
+    resources :posts, controller: "users/posts", only: :index
   end
 end
