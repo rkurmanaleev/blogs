@@ -24,3 +24,10 @@ $ ->
       avatar_image.src = old_avatar
       upload_field_src.val = ""
       remove_link_div.addClass("hidden")
+
+  if $(".pagination").length
+    $(window).scroll ->
+      url = $(".pagination a[rel='next']").attr("href")
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        $(".pagination").text("Fetching new posts")
+        $.getScript(url)
