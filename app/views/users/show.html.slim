@@ -12,6 +12,4 @@
           li = user.posts_stat
           li = user.comments_stat
       .user-links
-        = link_to "See All User's Posts", user_all_posts_path(user)
-        br
-        = link_to "See Recent User's Posts", user_recent_posts_path(user)
+        = link_to "See User's Posts", user_posts_path(user)
