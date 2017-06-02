@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   expose_decorated(:comment) { comment_fetcher }
   expose_decorated(:comments) { comments_fetcher }
 
+  def index
+  end
+
   def show
   end
 
@@ -34,7 +37,7 @@ class PostsController < ApplicationController
   private
 
   def posts_fetcher
-    Post.sorted_last
+    Post.ordered_by_desc.includes(:user).page(params[:page])
   end
 
   def comment_fetcher
