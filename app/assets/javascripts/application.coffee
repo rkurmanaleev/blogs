@@ -14,4 +14,3 @@
 #= require current_user
 #= require users
 #= require posts
-
