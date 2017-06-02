@@ -2,19 +2,19 @@ require "rails_helper"
 
 feature "As authenticated User, I can see any user's post" do
   include_context "current user signed in"
-  let!(:posts) { create_list(:post, 14, user: current_user) }
+  let!(:posts) { create_list(:post, 15, user: current_user) }
   let(:last_post) { posts.last }
   let(:first_post) { posts.first }
 
   before { visit user_path(current_user) }
 
-  scenario "All posts", js: true do
+  scenario "All posts of user", js: true do
     click_on "See User's Posts"
 
-    page.execute_script("window.scrollTo(0,100000)")
     expect(current_path).to eq user_posts_path(current_user)
-    expect(page).to have_content first_post.title
+    expect(page).not_to have_content first_post.title
     expect(page).to have_content last_post.title
+    expect(page).to have_css(".post", 10)
   end
 
   scenario "Statistics" do
