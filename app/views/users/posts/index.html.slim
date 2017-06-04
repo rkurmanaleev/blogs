@@ -4,5 +4,9 @@
       = "#{user.full_name} doesn't have any posts..."
   - else
     h3.text-center
-      = "#{controller_name.humanize} of #{user.full_name}"
-    = render collection: posts, partial: "posts/post"
+      = "Posts of #{user.full_name}"
+
+    #posts
+      = render collection: posts, partial: "posts/post"
+
+    = paginate(posts)

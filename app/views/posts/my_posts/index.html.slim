@@ -6,5 +6,8 @@
         | Create a 
         = link_to "new post", new_post_path
   - else
-    = render collection: posts, partial: "posts/post"
+    #posts
+      = render collection: posts, partial: "posts/post"
+
+    = paginate(posts)
 

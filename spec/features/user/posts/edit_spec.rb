@@ -14,8 +14,8 @@ feature "I want to edit previous post title and/or content" do
     scenario "with valid attributes" do
       edit_form("Updated title")
 
-      expect(current_path).to eq posts_path
-      expect(page).to have_content "Post has been successfully updated."
+      expect(current_path).to eq post_path(post)
+      expect(page).to have_content "Post was successfully updated."
     end
 
     scenario "with invalid attributes from" do
@@ -28,7 +28,7 @@ feature "I want to edit previous post title and/or content" do
 
   describe "as Another User" do
     let(:another_user) { create(:user) }
-    let(:current_user) { build(:user) }
+    let(:current_user) { create(:user) }
     let(:post) { create(:post, user: current_user) }
 
     before { login_as(another_user) }
