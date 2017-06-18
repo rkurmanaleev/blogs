@@ -1,9 +1,14 @@
 class PostDecorator < ApplicationDecorator
   TRUNCATED_TEXT_LENGTH = 500
+  TRUNCATED_TITLE_LENGTH = 15
 
   delegate :title, :user_id, :content, :errors
   delegate :full_name, to: :user, prefix: true
   decorates_association :comments
+
+  def short_title
+    @short_title ||= h.truncate(object.title, length: TRUNCATED_TITLE_LENGTH)
+  end
 
   def comments?
     object.comments.exists?
