@@ -2,28 +2,33 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user!, only: :destroy
 
-  expose_decorated(:comment)
+  expose(:comment)
   expose_decorated(:post)
-  expose_decorated(:comments) { comments_fetch }
+  expose_decorated(:comments) { fetch_comments }
 
   def create
-    comment.save
-    render "posts/_index_comments", comments: comments, layout: false
+    comment.post = post
+    comment.user = current_user
+
+    self.comment = post.comments.build if comment.save
+
+    render "fragments/_fragments", comments: comments, layout: false
   end
 
   def destroy
     comment.destroy
-    render "posts/_index_comments", comments: comments, layout: false
+
+    render "fragments/_fragments", comments: comments, layout: false
   end
 
   private
 
-  def comments_fetch
+  def fetch_comments
     post.comments.ordered_by_desc
   end
 
   def comment_params
-    params.require(:comment).permit(:id, :content, :post_id, :user_id)
+    params.require(:comment).permit(:content)
   end
 
   def authorize_user!
