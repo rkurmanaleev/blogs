@@ -1,14 +1,10 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :content, :user_id, :post_id, :updated_at
+  delegate :content, :user_id, :post_id, :updated_at, :errors
   delegate :full_name, :avatar_image, :avatar_image_id, to: :user, prefix: true
   delegate :title, to: :post, prefix: true
 
   def user_full_name
     @user_full_name ||= object.user.full_name
-  end
-
-  def post_title
-    @post_title ||= object.post.title
   end
 
   def user_avatar_image_tag

@@ -20,10 +20,17 @@ class UserDecorator < ApplicationDecorator
   def avatar_image_tag
     h.attachment_image_tag(
       object, :avatar_image,
+
       class: "user-avatar",
       format: "jpg",
       fallback: "no-avatar.png",
       id: "user-avatar-img"
+    )
+  end
+
+  def avatar_image_url
+    h.attachment_url(
+      object, :avatar_image
     )
   end
 end
