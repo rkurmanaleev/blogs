@@ -1,25 +1,12 @@
 require "rails_helper"
 
-feature "As user I want to view my previous post with comments" do
+feature "Show the post" do
   include_context "current user signed in"
-  let!(:post) { create(:post, user: current_user) }
+  include_context "current user's post"
 
-  def visit_posts_path_and_click_on_title
-    visit posts_path
-    click_on post.title
-  end
+  scenario "User sees the post" do
+    visit post_path(post)
 
-  context "Route behaviour" do
-    scenario "via link from home_page" do
-      visit_posts_path_and_click_on_title
-
-      expect(page).to have_posts_content_and_title_on_post_page
-    end
-
-    scenario "via direct link" do
-      visit post_path(post)
-
-      expect(page).to have_posts_content_and_title_on_post_page
-    end
+    expect(page).to have_posts_content_and_title_on_post_page
   end
 end

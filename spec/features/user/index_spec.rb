@@ -1,33 +1,18 @@
 require "rails_helper"
 
-feature "When I visit users#index I see" do
+feature "Popular Users" do
   include_context "current user signed in"
+  let!(:top_user) { create(:user, posts_count: 1) }
+  let(:popular_users_div) { ".popular-users" }
 
-  describe "call2action" do
-    scenario "when there are no users with posts" do
-      visit users_path
+  scenario "User can see Users with more than 0 posts" do
+    visit users_path
 
-      expect(page).to have_content "Create new Post"
-    end
-  end
+    within popular_users_div do
+      expect(page).not_to have_content current_user.full_name
 
-  describe "list of users" do
-    let!(:another_user) { create(:user, posts_count: 2) }
-    let!(:top_user) { create(:user, posts_count: 5) }
-    let(:users) { [top_user, another_user] }
-
-    scenario "with more than 0 posts" do
-      visit users_path
-
-      within ".popular-users" do
-        expect(page).not_to have_content "Create new Post"
-        expect(page).not_to have_content current_user.full_name
-
-        users.each do |user|
-          expect(page).to have_content(user.full_name)
-          expect(page).to have_content(user.posts_count)
-        end
-      end
+      expect(page).to have_content(top_user.full_name)
+      expect(page).to have_content(top_user.posts_count)
     end
   end
 end
