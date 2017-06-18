@@ -3,14 +3,12 @@
     h4
       b Leave a comment:
 
-  .new-comment-content
+  .new-comment-content[data-fragment-id="new-comment"]
     = simple_form_for [post, comment],
       data: { remote: true, behavior: "fragments" },
       html: { class: "form-horizontal" } do |f|
-      = f.input :user_id, value: current_user.id, as: :hidden
-      = f.input :post_id, value: post.id, as: :hidden
+
       = f.input :content, as: :text, label: false,
-        input_html: { placeholder: "Leave a comment here", rows: 3 }
-      = f.error :content
+        input_html: { placeholder: "Leave a comment here", rows: 3, value: "" }
       = f.submit "Save the Comment", id: "comment_save",
-        class: "btn btn-primary", disabled: "disabled"
+        class: "btn btn-primary"

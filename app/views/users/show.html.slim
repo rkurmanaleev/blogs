@@ -13,3 +13,5 @@
           li = user.comments_stat
       .user-links
         = link_to "See User's Posts", user_posts_path(user)
+
+        = link_to "Photo", user.avatar_image_url

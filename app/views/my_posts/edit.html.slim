@@ -1,5 +1,5 @@
 .col-sm-8.col-centered
-  = simple_form_for post, html: { class: "form-horizontal" } do |f|
+  = simple_form_for post, url: my_post_path(post), html: { class: "form-horizontal" } do |f|
     .form-group
       = f.input :title
       = f.input :content, as: "text", input_html: { rows: 10 }
@@ -7,4 +7,4 @@
       .col-sm-6.col-md-6
         = f.button :submit, class: "btn btn-success form-control"
       .col-sm-3.col-md-3.col-md-offset-3.text-right
-        = link_to "Back", posts_path, class: "btn btn-warning btn-big"
+        = link_to "Back", :back, class: "btn btn-warning btn-big"

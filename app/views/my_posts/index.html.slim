@@ -4,7 +4,7 @@
     h4.text-center
       p
         | Create a 
-        = link_to "new post", new_post_path
+        = link_to "new post", new_my_post_path
   - else
     #posts
       = render collection: posts, partial: "posts/post"

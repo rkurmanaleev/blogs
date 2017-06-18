@@ -9,19 +9,15 @@
     h3 = link_to post.title, post
 
   .post-content
-    - if action_name == "show"
-      p = post.content
-      br
-    - else
-      p = post.short_content
-      .read-more
-        = link_to "Read more", post
+    p = post.short_content
+    .read-more
+      = link_to "Read more", post
 
   - if policy(post).manage?
     .post-links
       pre.marginned-bottom
-        = link_to "Edit the Post", edit_post_path(post)
+        = link_to "Edit the Post", edit_my_post_path(post)
         |   
-        = link_to "Delete the Post", post, method: :delete, data: { confirm: "Are you sure?" }
+        = link_to "Delete the Post", my_post_path(post), method: :delete, data: { confirm: "Are you sure?" }
 
   hr
