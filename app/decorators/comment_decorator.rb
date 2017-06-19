@@ -14,6 +14,7 @@ class CommentDecorator < ApplicationDecorator
   def user_avatar_image_tag
     h.attachment_image_tag(
       object.user, :avatar_image,
+      :fit, 90, 90,
       format: "jpg",
       fallback: "no-avatar.png",
       id: "user-avatar-img",
