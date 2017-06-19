@@ -59,7 +59,7 @@
       "required": true
     }
   },
-  "formation": {},
+master
   "addons": [
     "newrelic",
     "heroku-postgresql",
