@@ -1,14 +1,11 @@
-require "refile/fog"
+require "refile/s3"
 require "refile/simple_form"
 
-credentials = {
-  provider: "Google",
-  google_storage_access_key_id: ENV.fetch("GOOGLE_KEY_ID"),
-  google_storage_secret_access_key: ENV.fetch("GOOGLE_ACCESS_KEY"),
-  directory: ENV.fetch("GOOGLE_DIRECTORY")
+aws = {
+  access_key_id: ENV.fetch("AWS_ACCESS_KEY"),
+  secret_access_key: ENV.fetch("AWS_SECRET_KEY"),
+  region: ENV.fetch("AWS_REGION"),
+  bucket: ENV.fetch("AWS_BUCKET"),
 }
-
-Refile.configure do |config|
-  config.cache = Refile::Fog::Backend.new(prefix: "cache", **credentials)
-  config.store = Refile::Fog::Backend.new(prefix: "store", **credentials)
-end
+Refile.cache = Refile::S3.new(prefix: "cache", **aws)
+Refile.store = Refile::S3.new(prefix: "store", **aws)
