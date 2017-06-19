@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   expose_decorated(:user)
-  expose_decorated(:users) { users_fetcher }
+  expose_decorated(:users) { fetch_users }
 
   def index
   end
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   private
 
-  def users_fetcher
-    User.find_by_sql('SELECT * FROM users WHERE ("posts_count" > 0) ORDER BY "posts_count" DESC')
+  def fetch_users
+    User.with_posts.order_by_posts
   end
 end
