@@ -3,7 +3,7 @@
   .row
     .col-sx-2.col-sm-2.col-md-2.col-lg-2
       .user-avatars
-        = user.avatar_image_tag
+        = user.avatar_with_download_link
 
     .col-sx-7.col-sm-7.col-md-7.col-lg-7
       .user-stats
@@ -13,5 +13,3 @@
           li = user.comments_stat
       .user-links
         = link_to "See User's Posts", user_posts_path(user)
-
-        = link_to "Photo", user.avatar_image_url
