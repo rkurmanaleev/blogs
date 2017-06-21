@@ -2,8 +2,7 @@
   .user-avatar
     h2.text-center Avatar
     .user-avatar-picture
-      = attachment_image_tag(resource, :avatar_image,
-        format: "jpg", fallback: "no-avatar.png", id: "user-avatar-img", class: "user-avatar-upload")
+      = resource.decorate.avatar_image_tag(300, 300, "user-avatar-upload")
     .user-avatar-link.hidden
       = link_to "Switch to old avatar?", "#", id: "user-avatar-delete"
 
@@ -13,13 +12,14 @@
       as: resource_name,
       url: registration_path(resource_name),
       html: { method: :put },
+      defaults: { class: "form-control" },
       class: "form-horizontal" do |f|
     .form-group
-      = f.input :full_name, required: true, autofocus: true, class: "form-control", placeholder: "Your full name", label: false
-      = f.input :email, required: true, class: "form-control", placeholder: "Your email", label: false
-      = f.input :password, required: false, class: "form-control", placeholder: "Set new password", label: false, autocomplete: :off
-      = f.input :password_confirmation, required: false, class: "form-control", placeholder: "Confirm password", label: false
-      = f.input :avatar_image, as: :attachment, direct: true, presigned: true, class: "form-control"
+      = f.input :full_name, required: true, autofocus: true, placeholder: "Your full name", label: false
+      = f.input :email, required: true, placeholder: "Your email", label: false
+      = f.input :password, required: false, placeholder: "Set new password", label: false, autocomplete: :off
+      = f.input :password_confirmation, required: false, placeholder: "Confirm password", label: false
+      = f.input :avatar_image, as: :attachment, direct: true, presigned: true
       = f.label :remove_avatar_image, "Remove avatar "
       = f.check_box :remove_avatar_image, id: "remove_avatar_image"
       = f.button :submit, "Update", class: "btn btn-success form-control"

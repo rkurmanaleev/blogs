@@ -1,0 +1,14 @@
+.new-comment
+  .new-comment-header
+    h4
+      b Leave a comment:
+
+  .new-comment-content[data-fragment-id="new-comment"]
+    = simple_form_for [post, comment],
+      data: { remote: true, behavior: "fragments" },
+      html: { class: "form-horizontal" } do |f|
+
+      = f.input :content, as: :text, label: false,
+        input_html: { placeholder: "Leave a comment here", rows: 3, value: "" }
+      = f.submit "Save the Comment", id: "comment_save", disabled: true,
+        class: "btn btn-primary"

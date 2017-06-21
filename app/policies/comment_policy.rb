@@ -1,5 +1,5 @@
 class CommentPolicy < ApplicationPolicy
   def delete?
-    @record.user_id == @user.id
+    @record.user == @user
   end
 end

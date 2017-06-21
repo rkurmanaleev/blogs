@@ -1,5 +1,25 @@
 .col-sx-9.col-sm-9.col-md-9.col-lg-9
-  = render post
+  .post
+    .post-header
+      h6
+        = post.created_date
+        i by 
+        = link_to post.user_full_name, post.post_user_path
 
-  = render "posts/create_comment"
-  = render "posts/index_comments", comments: comments
+    .post-title
+      h3 = link_to post.title, post
+
+    .post-content
+      p = post.content
+      br
+
+    - if policy(post).manage?
+      .post-links
+        pre.marginned-bottom
+          = link_to "Edit the Post", edit_my_post_path(post)
+          |   
+          = link_to "Delete the Post", my_post_path(post), method: :delete, data: { confirm: "Are you sure?" }
+
+    hr
+
+  = render "fragments/fragments", comments: comments

@@ -1,5 +1,10 @@
 $comment-content-color: rgba(39, 55, 64, .09);
 
+.post-title {
+  max-width: 960px;
+  word-wrap: break-word;
+}
+
 .posts-form {
   padding-bottom: 1rem;
 }

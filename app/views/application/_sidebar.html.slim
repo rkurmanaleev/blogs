@@ -5,7 +5,7 @@
         h4 Recent Posts
       ol.list-unstyled
         - posts_sidebar.each do |p|
-          li = link_to p.title, p
+          li = link_to p.short_title, p
 
 - if Comment.any?
   section.sidebar-module
@@ -15,6 +15,6 @@
       ol.list-unstyled
         - comments_sidebar.each do |c|
           li
-            = link_to "#{c.user.full_name}", user_path(c.user)
+            = link_to "#{c.user_full_name}", user_path(c.user_id)
             | on 
-            = link_to "#{c.post.title}", post_path(c.post)
+            = link_to "#{c.post_short_title}", post_path(c.post_id)

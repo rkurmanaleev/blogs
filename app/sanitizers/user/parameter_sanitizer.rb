@@ -7,6 +7,7 @@ class User
       password_confirmation
       avatar_image
       remove_avatar_image
+      profile_image_content_type
     ).freeze
 
     def initialize(*)
