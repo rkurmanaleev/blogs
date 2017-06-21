@@ -8,6 +8,6 @@ Dependencies:
 * PhantomJS
 * Rails 5.0.2
 
-[![Build Status](https://semaphoreci.com/api/v1/ruslankurmanaleev/blogs/branches/141202365-new-comment-via-api/badge.svg)](https://semaphoreci.com/ruslankurmanaleev/blogs)
+[![Build Status](https://semaphoreci.com/api/v1/ruslankurmanaleev/blogs-2/branches/master/badge.svg)](https://semaphoreci.com/ruslankurmanaleev/blogs-2)
 Pivotal: https://www.pivotaltracker.com/projects/1985253
-Production: https://blogfs.herokuapp.com/
+Production: https://blogfs.tk
