@@ -12,13 +12,13 @@ class CommentsController < ApplicationController
 
     self.comment = post.comments.build if comment.save
 
-    render "fragments/_fragments", comments: comments, layout: false
+    render "posts/_fragments", layout: false
   end
 
   def destroy
     comment.destroy
 
-    render "fragments/_fragments", comments: comments, layout: false
+    render "posts/_fragments", layout: false
   end
 
   private

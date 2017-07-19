@@ -8,6 +8,16 @@ class ApplicationController < ActionController::Base
   responders :flash
   respond_to :html
 
-  expose_decorated(:posts_sidebar, decorator: PostDecorator) { Post.sorted_recent.decorate }
-  expose_decorated(:comments_sidebar, decorator: CommentDecorator) { Comment.sorted_recent.decorate }
+  expose(:posts_sidebar) { fetch_sidebar_posts }
+  expose(:comments_sidebar) { fetch_sidebar_comments }
+
+  private
+
+  def fetch_sidebar_posts
+    PostDecorator.decorate_collection(Post.sorted_recent)
+  end
+
+  def fetch_sidebar_comments
+    CommentDecorator.decorate_collection(Comment.sorted_recent)
+  end
 end
