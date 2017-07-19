@@ -9,7 +9,6 @@ feature "Create a comment" do
 
   scenario "User creates the comment with content", js: true do
     fill_in "comment_content", with: "Some new and fresh comment"
-    expect(page).to have_button("Save the Comment", disabled: false)
 
     click_on "Save the Comment"
 
@@ -21,7 +20,6 @@ feature "Create a comment" do
   scenario "User creates the comment without content", js: true do
     fill_in "comment_content", with: nil
 
-    expect(page).to have_button("Save the Comment", disabled: true)
     expect(page).to have_content "No comments yet..."
   end
 end
