@@ -3,6 +3,10 @@ class CommentDecorator < ApplicationDecorator
   delegate :full_name, :avatar_image, :avatar_image_id, to: :user, prefix: true
   delegate :title, to: :post, prefix: true
 
+  def formatted_created_at
+    object.updated_at.to_i
+  end
+
   def post_short_title
     object.post.decorate.short_title
   end
