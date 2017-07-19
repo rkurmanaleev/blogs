@@ -1,4 +1,4 @@
-.comment[data-element="#{comment.id}" data-updated-at="#{comment.updated_at.to_i}"]
+.comment[data-element="#{comment.id}" data-updated-at="#{comment.formatted_created_at}"]
   = comment.user_avatar_image_tag
 
   .comment-user-date
@@ -10,5 +10,5 @@
 
   - if policy(comment).delete?
     .comment-links
-      = link_to "Delete comment?", [post, comment], method: :delete,
-        data: { remote: true, behavior: "fragments", confirm: "Are you sure?" }
+      = link_to("Delete comment?", [post, comment], method: :delete,
+        data: { remote: true, behavior: "fragments", confirm: "Are you sure?" })
