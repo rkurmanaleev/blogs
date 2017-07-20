@@ -10,7 +10,7 @@
       </p>
       <center>
         <button class="large expanded">
-          <%= link_to "Confirm my account", confirmation_url(@user, confirmation_token: @token) %>
+          <%= link_to("Confirm my account", confirmation_url(@user, confirmation_token: @token)) %>
         </button>
       </center>
     </columns>
