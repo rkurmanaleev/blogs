@@ -6,19 +6,19 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      h3 = link_to "Blog FS", root_path, style: "text-decoration: none"
+      h3 = link_to("Blog FS", root_path, style: "text-decoration: none")
     #bs-example-navbar-collapse-1.collapse.navbar-collapse.navbar-right
       ul.nav.navbar-nav
-        li = link_to "Home", root_path
+        li = link_to("Home", root_path)
         - if user_signed_in?
           = render "post_menu"
         - else
-          li = link_to "Posts", posts_path
-        li = link_to "Users", users_path
+          li = link_to("Posts", posts_path)
+        li = link_to("Users", users_path)
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           = render "user_menu"
         - else
-          li = link_to "Sign in", new_user_session_path
-          li = link_to "Sign up", new_user_registration_path
+          li = link_to("Sign in", new_user_session_path)
+          li = link_to("Sign up", new_user_registration_path)
 

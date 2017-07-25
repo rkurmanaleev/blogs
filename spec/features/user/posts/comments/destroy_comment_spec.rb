@@ -15,7 +15,7 @@ feature "Delete the comment" do
     expect(page).to have_content "No comments yet..."
   end
 
-  scenario "Another User tried to delete the post" do
+  scenario "Another User tries to delete the post" do
     login_as(another_user)
     visit post_path(post)
 

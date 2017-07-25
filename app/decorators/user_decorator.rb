@@ -1,16 +1,12 @@
 class UserDecorator < ApplicationDecorator
-  delegate :id, :full_name, :email, :avatar_image
-
-  def full_name_with_email
-    @full_name_with_email ||= "#{object.full_name} (#{object.email})"
-  end
+  delegate :full_name, :email, :avatar_image
 
   def posts_stat
-    @posts_stat ||= "Total Posts: #{object.posts.size}"
+    @posts_stat ||= object.posts.size
   end
 
   def comments_stat
-    @comments_stat ||= "Total Comments: #{object.comments.size}"
+    @comments_stat ||= object.comments.size
   end
 
   def posts?

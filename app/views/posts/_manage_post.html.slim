@@ -1,0 +1,6 @@
+- if policy(post).manage?
+  .post-links
+    pre.marginned-bottom
+      = link_to("Edit the Post", edit_my_post_path(post))
+      |   
+      = link_to("Delete the Post", my_post_path(post), method: :delete, data: { confirm: "Are you sure?" })

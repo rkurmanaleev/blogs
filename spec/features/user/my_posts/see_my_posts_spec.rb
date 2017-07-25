@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Lists the Posts" do
+feature "See the Posts" do
   include_context "current user signed in"
   let(:posts) { create_list(:post, 11, user: current_user) }
 
