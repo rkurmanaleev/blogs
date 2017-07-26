@@ -12,4 +12,4 @@
       - users.each do |u|
         = link_to u.full_name, u
         ul
-          li = u.posts_stat
+          li = "Total posts: #{u.posts_stat}"
